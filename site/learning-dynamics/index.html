@@ -1,0 +1,955 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="appendix/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Learning Dynamics - Machine Learning</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#learning-dynamics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Machine Learning" class="md-header__button md-logo" aria-label="Machine Learning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Machine Learning
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Learning Dynamics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Machine Learning" class="md-nav__button md-logo" aria-label="Machine Learning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Machine Learning
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome!
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning dynamics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Learning dynamics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Dynamics
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modeling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#equilibrium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Equilibrium
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evolution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Citation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modeling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#equilibrium" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Equilibrium
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evolution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#citation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Citation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="learning-dynamics">Learning Dynamics</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This work aims to develop a fundamental theory of artificial learning that both explains existing optimization algorithms and facilitates their improvement as well as the creation of new ones. To this end, only three assumptions were made about a model capable of learning:</p>
+<ul>
+<li>
+<p>It can be described by a finite set of parameters.</p>
+</li>
+<li>
+<p>It is differentiable with respect to its parameters.</p>
+</li>
+<li>
+<p>It makes no assumptions about the information it ingests.</p>
+</li>
+</ul>
+<p>The theory is constructed based on the axiomatic thermodynamic framework proposed by Callen <sup id="fnref:callen_thermo"><a class="footnote-ref" href="#fn:callen_thermo">1</a></sup>. Assuming a quasi-static regime, symplectic geometry is used to describe the geometry of the model’s phase space <sup id="fnref:cannas_symph"><a class="footnote-ref" href="#fn:cannas_symph">2</a></sup>, and a Hamiltonian formalism <sup id="fnref:arnold_mechanics"><a class="footnote-ref" href="#fn:arnold_mechanics">3</a></sup> is employed to derive the model’s equations of evolution.</p>
+<p>Finally, we utilize these equations to re-derive established optimization algorithms, thereby validating the theory and offering a physical grounding for the learning process. This shows that algorithms like momentum-based Stochastic Gradient Descent <sup id="fnref:bishop_dl"><a class="footnote-ref" href="#fn:bishop_dl">4</a></sup> or regularization techniques like Weight Decay <sup id="fnref:krogh_weight_decay"><a class="footnote-ref" href="#fn:krogh_weight_decay">5</a></sup>, emerge naturally as consequences of the proposed equations of learning.</p>
+<p>The connection between the concepts of information and entropy <sup id="fnref:baez_entropy"><a class="footnote-ref" href="#fn:baez_entropy">6</a></sup> suggests that learning can be modeled as a thermodynamic process, in which its participants, known as models, evolve based on the information they perceive.</p>
+<h2 id="modeling">Modeling</h2>
+<p>A model is a simplified representation of a system, defined by a set of parameters that determine its behavior. A specific choice of a set of parameters defines what we will call a configuration.</p>
+<p>We say that a model is differentiable if its configurations are points on a smooth differential manifold <span class="arithmatex">\(\mathcal{S}\)</span> such that its learning can be defined in terms of a curve parametrized over it. <sup id="fnref:lee_smooth"><a class="footnote-ref" href="#fn:lee_smooth">7</a></sup></p>
+<p>On the other hand, we will only focus on models that are domain-agnostic, meaning they do not incorporate assumptions about the information they will ingest. In this way, the dynamics of their learning can be designed solely in terms of their configurations.</p>
+<h2 id="equilibrium">Equilibrium</h2>
+<p>To each dimension of the manifold, we can associate a parameter so that each configuration <span class="arithmatex">\(s \in \mathcal{S}\)</span> can be described in terms of coordinates:</p>
+<div class="arithmatex">\[
+(U/c, w^1, ..., w^d) = (w^0, \mathbf{w}) \in \mathbb{R}^{d+1}
+\]</div>
+<p>Where <span class="arithmatex">\(U\)</span> represents the internal energy, <span class="arithmatex">\(w^1, \dots, w^d\)</span> are extensive parameters of the model known as weights, and <span class="arithmatex">\(c\)</span> is a constant such that <span class="arithmatex">\(w^0\)</span> is dimensionless.</p>
+<p>We say that the model is in an equilibrium state <sup id="fnref2:callen_thermo"><a class="footnote-ref" href="#fn:callen_thermo">1</a></sup> if an entropy function <span class="arithmatex">\(S\)</span> can be defined over it, with units of information, and monotonically increasing with respect to energy, that is:</p>
+<div class="arithmatex">\[
+\frac{\partial S}{\partial U} &gt; 0
+\]</div>
+<p>By differentiating <span class="arithmatex">\(S\)</span>, we can see how it changes under infinitesimal displacements of the configuration:</p>
+<div class="arithmatex">\[
+dS = \frac{\partial S}{\partial U} dU + \sum_{j} \frac{\partial S}{\partial w^{j}}dw^{j}
+\]</div>
+<p>The rates of change of entropy along the directions of energy and weights give rise to the conjugate variables:</p>
+<div class="arithmatex">\[
+\beta = \frac{\partial S}{\partial U} \qquad Y_{j} = \frac{\partial S}{\partial w^{j}} \qquad j = 1,...,d
+\]</div>
+<p>These variables are known as the intensive parameters of the model. We will refer to the <span class="arithmatex">\(\mathbf{Y}\)</span> intensive parameters as entropic moments. We can also identify the temperature <span class="arithmatex">\(T\)</span> as the reciprocal of the parameter <span class="arithmatex">\(\beta\)</span> conjugate to the energy, that is:</p>
+<div class="arithmatex">\[
+T \equiv \frac{1}{\beta} &gt; 0 
+\]</div>
+<p>The entropy function is local, that is, it is only defined for each equilibrium state. Therefore, if one seeks to describe the states of the model over the entire state space, it is necessary to resort to the phase space <sup id="fnref2:arnold_mechanics"><a class="footnote-ref" href="#fn:arnold_mechanics">3</a></sup> defined over <span class="arithmatex">\(\mathcal{S}\)</span>. </p>
+<p>The phase space is a construction over the state space that assigns to each point its cotangent space; that is, if <span class="arithmatex">\((w_0, \mathbf{w})\)</span> are coordinates of the state space, then <span class="arithmatex">\((w_0, \mathbf{w},Y^0, \mathbf{Y})\)</span> are coordinates of the phase space. Let us now consider the <span class="arithmatex">\(1\)</span>-form living in the phase space <span class="arithmatex">\(\Omega\)</span> given by:</p>
+<div class="arithmatex">\[
+\omega = \beta dU + \sum_{j} Y_{j} dw^{j} \in \Omega
+\]</div>
+<p>This form generalizes the notion of the differential of entropy, such that the model is in an equilibrium state if there exists an entropy function <span class="arithmatex">\(S\)</span> such that:</p>
+<div class="arithmatex">\[
+\omega = dS
+\]</div>
+<p>Expanding the exterior derivative of the differential <span class="arithmatex">\(1\)</span>-form <span class="arithmatex">\(\omega\)</span>, we obtain the differential <span class="arithmatex">\(2\)</span>-form:</p>
+<div class="arithmatex">\[
+d\omega = d\beta \wedge dU + \sum_{j} dY_{j} \wedge dw^{j}
+\]</div>
+<p>The latter is known as the symplectic form <sup id="fnref2:cannas_symph"><a class="footnote-ref" href="#fn:cannas_symph">2</a></sup> and allows the phase space <span class="arithmatex">\(\Omega\)</span> to be endowed with a Hamiltonian geometric structure.</p>
+<h2 id="evolution">Evolution</h2>
+<p>For each point in the phase space, entropy is defined only for equilibrium states. This means that, to remain within the scope of a thermodynamic description, the system's evolution must be slow enough to preserve the quasi-static approximation. Under this approximation the learning curve can be viewed as a succession of equilibrium states. This approximation allows us to define canonical pairs over the entire manifold through Poisson brackets:</p>
+<div class="arithmatex">\[
+\{U, \beta\} = 1 \qquad \{w^{i}, Y_{j} \} = \delta^{i}_{j} \qquad \text{with } \delta^{i}_{j} = \begin{cases} 1 \quad i = j \\ 0 \quad i \neq j \end{cases} 
+\]</div>
+<p>Then, we can recover an analogous to Hamilton equations <sup id="fnref:hamilton1834"><a class="footnote-ref" href="#fn:hamilton1834">8</a></sup> for thermodynamic parameters to describe the evolution of the model parameters without constraints:</p>
+<div class="arithmatex">\[
+-h \frac{dw^{i}}{dt} = k\{w^{i}, H\} = k\frac{\partial H}{\partial Y_{i}} \qquad -\frac{dY_{i}}{dt} = k\{Y_{i}, H  \} = -k\frac{\partial H}{\partial w^{i}}
+\]</div>
+<div class="arithmatex">\[
+-\frac{dU}{dt} = k\{U, H \} = k\frac{\partial H}{\partial \beta} \qquad -h\frac{d\beta}{dt} = k\{\beta, H\} = -k\frac{\partial H}{\partial U}
+\]</div>
+<p>Where <span class="arithmatex">\(h\)</span> is the unit of action and <span class="arithmatex">\(k\)</span> is the unit of information, which are introduced to maintain consistent units.</p>
+<p>The problem with this formulation is that it leads to a dynamics in which the model evolves in closed orbits. To address this, we introduce a coupling of the intensive parameters with the temperature of the form:</p>
+<div class="arithmatex">\[
+Y_{i} = \beta X_{i} \qquad i = 1, ..., d
+\]</div>
+<p>We will refer to the <span class="arithmatex">\(\mathbf{X}\)</span> parameters as energy moments. This coupling is not arbitrary, rather, it arises directly from the energy representation of thermodynamics:</p>
+<div class="arithmatex">\[
+dU = T dS - \sum_{j} X_{j} dw^{j}
+\]</div>
+<p>The coupling deforms the symplectic structure that describes the geometry of the phase space. By substituting the coupling into the <span class="arithmatex">\(2\)</span>-form <span class="arithmatex">\(d\omega\)</span>, we obtain:</p>
+<div class="arithmatex">\[
+d\omega = d\beta \wedge (dU +\sum_{j}X_{j}dw^{j}) + \beta\sum_{j} dX_{j} \wedge dw^{j}
+\]</div>
+<p>Which remains a non-degenerate symplectic form for <span class="arithmatex">\(\beta &gt; 0\)</span>, a condition that has already been imposed. The new non-negative Poisson brackets yield:</p>
+<div class="arithmatex">\[
+\{U, \beta \} = 1 \qquad \{w^{i}, X_{j}\} = \delta^{i}_j \qquad \{U, X_{i}\} = -\frac{1}{\beta}X_{i}
+\]</div>
+<p>And their respective equations of motion are given by:</p>
+<div class="arithmatex">\[ 
+-h\frac{dw^{i}}{dt} = \frac{k}{\beta} \frac{\partial H}{\partial X_{i}} \qquad -h\frac{dX_{i}}{dt} = -\frac{k}{\beta} \frac{\partial H}{\partial w^{i}} + \frac{k X_{i}}{\beta} \frac{\partial H}{\partial U}
+\]</div>
+<div class="arithmatex">\[
+-h\frac{dU}{dt} = k \frac{\partial H}{\partial \beta} - \frac{k}{\beta} \sum_{j} X_{j} \frac{\partial H}{\partial X_{j}} \qquad -h\frac{d\beta}{dt} = -k\frac{\partial H}{\partial U} 
+\]</div>
+<p>We will refer to these as the Hermosis equations of learning. While they can be rigorously derived from the new symplectic form, a more streamlined derivation based on the properties of Poisson brackets is provided in the Appendix.</p>
+<h2 id="integration">Integration</h2>
+<p>The presented four equations that will allow us to describe the learning process of a model. Since they should be numerically integrated to perform optimization, let's find their integral form. By substituting the last equation into the second one and rearranging the terms, we obtain the evolution equation for the momenta <span class="arithmatex">\(X_i\)</span>​ as</p>
+<div class="arithmatex">\[
+h\beta \frac{dX_{i}}{dt} + h\frac{d\beta}{dt} X_{i} = h \frac{d}{dt}(\beta X_{i}) = k\frac{\partial H}{\partial w^{i}}
+\]</div>
+<p>Integrating over the interval <span class="arithmatex">\([t−\tau,t]\)</span>, we obtain an update rule for the momenta:</p>
+<div class="arithmatex">\[
+\beta(t) \mathbf{X}(t) = \beta(t-\tau) \mathbf{X}(t-\tau) -\int_{t-\tau}^{t} \mathbf{F}(t') dt'
+\]</div>
+<p>Where <span class="arithmatex">\(\mathbf{F}\)</span> represents a generalized force, whose components are given by:</p>
+<div class="arithmatex">\[
+F_{i} = -\frac{k}{h}\frac{\partial H}{\partial w^{i}}
+\]</div>
+<p>On the other hand, integrating the first equation over the same interval, we obtain an update rule for the weights:</p>
+<div class="arithmatex">\[
+\mathbf{w}(t) = \mathbf{w}(t-\tau) - \int_{t-\tau}^t \mathbf{v}(t')dt'
+\]</div>
+<p>Where <span class="arithmatex">\(\mathbf{v}\)</span> denotes the learning velocity, whose components are:</p>
+<div class="arithmatex">\[
+v^{i} = \frac{k}{h\beta} \frac{\partial H}{\partial X_{i}}
+\]</div>
+<p>This last equation tells us something important, the <span class="arithmatex">\(\beta\)</span> parameter determines the system's inertia throughout its evolution. Large values of <span class="arithmatex">\(\beta\)</span> slow down learning, while small values accelerate it.</p>
+<h2 id="application">Application</h2>
+<p>Let us now examine the connection between the proposed dynamics and the current algorithms used in the field of machine learning.</p>
+<p>In practice, a model is trained by minimizing a loss function <span class="arithmatex">\(L\)</span>, which measures the distance between a model's current state and an expected state. Drawing from classical mechanics, we propose a potential analogous to the gravitational potential:</p>
+<div class="arithmatex">\[
+V = \frac{\beta c^2}{k} L
+\]</div>
+<p>Where <span class="arithmatex">\(c^2\)</span> with units of square energy is introduced just to ensure that <span class="arithmatex">\(L\)</span> remains dimensionless. The choice of this potential is not arbitrary; it is based on the interpretation of the term <span class="arithmatex">\(\beta/k\)</span> as a thermal mass that amplifies the importance of the distance within the potential energy. Furthermore, we propose a kinetic energy in terms of a mass tensor <span class="arithmatex">\(M_{ij}\)</span>​ of the form:</p>
+<div class="arithmatex">\[
+K = \frac{1}{2} \sum_{i j} M^{ij} Y_{i} Y_{j} = \frac{\beta}{2k}\sum_{ij} g^{ij}X_{i} X_{j} = \frac{\beta}{2k} \mathbf{X}^2
+\]</div>
+<p>Where <span class="arithmatex">\(g_{ij}\)</span>​ is a dimensionless metric tensor, which we assume for the moment to be constant. In this way, the Hamiltonian is defined as:</p>
+<div class="arithmatex">\[
+H = \frac{\beta}{2k} \mathbf{X}^2 + \frac{\beta c^2}{k} L + E(U, \beta)
+\]</div>
+<p>Where <span class="arithmatex">\(E\)</span> is a function of the temperature, enabling us to specify an arbitrary thermal profile. Under this Hamiltonian, the velocity components are given by:</p>
+<div class="arithmatex">\[
+v^{i} = \frac{k}{h\beta} \frac{\partial H}{\partial X_{i}} = \frac{1}{h} X^{i} \qquad  X^{i} = \sum_{ij}g^{ij}X_j
+\]</div>
+<p>Applying an Euler discretization, the weight update rule can be approximated as:</p>
+<div class="arithmatex">\[
+\mathbf{w}(t) \approx \mathbf{w}(t-\tau) - \frac{\tau}{h} \mathbf{X}(t)
+\]</div>
+<p>On the other hand, the generalized force driving the learning process has the following components:</p>
+<div class="arithmatex">\[
+F_{i} = -\frac{\beta c^2}{h} \frac{\partial L}{\partial w^{i}} 
+\]</div>
+<p>By evaluating the components and performing the integration, we arrive at an expression for the impulse as a function of the loss gradient.</p>
+<div class="arithmatex">\[
+\mathbf{I}(t) = -\int_{t-\tau}^t\mathbf{F}(t') dt' = \frac{c^2}{h} \nabla L \int_{t-\tau}^t \beta(t')dt' 
+\]</div>
+<p>Substituting into the momentum update rule, we obtain:</p>
+<div class="arithmatex">\[
+\mathbf{X}(t) = \frac{\beta(t-\tau)}{\beta(t)}    \mathbf{X}(t-\tau) + \frac{c^2}{h} \left( \frac{1}{\beta(t)} \int_{t-\tau}^t \beta(t') dt'\right ) \nabla L
+\]</div>
+<p>This tells us that the momenta are updated in terms of time averages of the thermal mass. If we assume a constant temperature, that is, a constant thermal mass:</p>
+<div class="arithmatex">\[
+\beta(t) = \beta
+\]</div>
+<p>We obtain a constant momentum that depends on the step size:</p>
+<div class="arithmatex">\[
+\mathbf{I}(t) = \frac{\beta c^2}{h} \nabla L \int_{t-\tau}^t dt' =  \frac{\tau c^2}{h}\beta \nabla L
+\]</div>
+<p>And the update rule will be a historical accumulation of the loss function:</p>
+<div class="arithmatex">\[
+\mathbf{X}(t) = \mathbf{X}(t-\tau) + \frac{\tau c^2}{h} \nabla L
+\]</div>
+<p>Under a suitable reparameterization, we recover the standard gradient descent or <span class="arithmatex">\(\text{SGD}\)</span> update rule <sup id="fnref2:bishop_dl"><a class="footnote-ref" href="#fn:bishop_dl">4</a></sup>:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\mathbf{X}(t) = \mathbf{X}(t-\tau) +  \zeta \nabla L
+\\
+\\
+\mathbf{w}(t) \approx \mathbf{w}(t-\tau) - \eta \mathbf{X}(t)
+\end{aligned}
+\]</div>
+<p>Where <span class="arithmatex">\(\eta\)</span> is the learning rate and <span class="arithmatex">\(\zeta\)</span> controls the influence of the loss gradient on the momentum.</p>
+<p>By adding a harmonic potential to the Hamiltonian such that:</p>
+<div class="arithmatex">\[
+H = \frac{\beta}{2k} \mathbf{X}^2 + \frac{\lambda}{2} \mathbf{w}^2 + V
+\]</div>
+<p>The generalized force now includes a term consistent with that used in gradient descent with weight decay <sup id="fnref2:krogh_weight_decay"><a class="footnote-ref" href="#fn:krogh_weight_decay">5</a></sup>, which proposes adding a term <span class="arithmatex">\(\lambda \mathbf{w}\)</span> to the loss gradient. This is because an extra term is now added to the force:</p>
+<div class="arithmatex">\[
+F_{i}' = \lambda w_{i}
+\]</div>
+<p>If we assume that the system cools exponentially, that is, with a thermal mass:</p>
+<div class="arithmatex">\[
+\beta(t) = \beta e^{\gamma t}
+\]</div>
+<p>We obtain an impulse given by:</p>
+<div class="arithmatex">\[
+\mathbf{I}(t) = \frac{\beta c^2}{h} \nabla L \int_{t-\tau}^t e^{\gamma t'} dt' = \frac{c^2}{h} \frac{1-e^{-\gamma \tau}}{\gamma} \beta e^{\gamma t}
+\]</div>
+<p>Then, the momentum will be an exponential moving average <sup id="fnref:brown_expsmooth"><a class="footnote-ref" href="#fn:brown_expsmooth">9</a></sup> of the loss gradient.</p>
+<div class="arithmatex">\[
+\mathbf{X}(t) = e^{-\gamma \tau} \mathbf{X}(t-\tau) + \frac{1-e^{-\gamma \tau}}{\gamma} \frac{c^2}{h} \nabla L
+\]</div>
+<p>Again, under a suitable reparameterization, the system reduces to the gradient descent algorithm with momentum and friction <sup id="fnref:bottou_sgd"><a class="footnote-ref" href="#fn:bottou_sgd">10</a></sup>:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\mathbf{X}(t) = \mu \mathbf{X}(t-\tau) + (1-\mu) \zeta \nabla L 
+\\
+\\
+\mathbf{w}(t) = \mathbf{w}(t-\tau) - \eta \mathbf{X}(t)
+\end{aligned}
+\]</div>
+<p>Lastly, we adopt a classical Hamiltonian incorporating relativistic kinetic energy, given by:</p>
+<div class="arithmatex">\[
+H = \sqrt{\mathbf{X}^2 + \frac{k^2}{\beta^2}} + V + E(U, \beta)
+\]</div>
+<p>This Hamiltonian is a generalization of the previous one, since for small momenta <span class="arithmatex">\(|\mathbf{X}| \ll k/\beta\)</span>, the kinetic energy can be approximated as:</p>
+<div class="arithmatex">\[
+\sqrt{\mathbf{X}^2+\frac{k^2}{\beta^2}} = \frac{k^2}{\beta^2} \sqrt{\frac{\beta^2}{k^2}\mathbf{X}^2 + 1} \approx \frac{k}{\beta} + \frac{\beta}{2k}\mathbf{X}^2 - \frac{\beta^3 (\mathbf{X}^2)^2}{8k^3} + \cdots
+\]</div>
+<p>The first term, <span class="arithmatex">\(kT\)</span>, corresponds to a rest energy, while higher-order terms are typically discarded. However, recent work on physics-inspired optimizers <sup id="fnref:vaidhyanathan_vradam"><a class="footnote-ref" href="#fn:vaidhyanathan_vradam">11</a></sup> has shown that retaining higher-order terms in the series can enhance optimization.</p>
+<p>Under a relativistic regime, the learning velocity will then be:</p>
+<div class="arithmatex">\[
+v^{i} = \frac{k}{h\beta} \frac{\partial H}{\partial X_{i}} =  \frac{k}{h\beta}  \frac{X^{i}}{ \sqrt{\mathbf{X}^2 + k^2/\beta^2}} = \frac{1}{h} \frac{X^{i}}{\sqrt{\beta^2\mathbf{X}^2/k^2 + 1}}
+\]</div>
+<p>If we consider <span class="arithmatex">\(\beta(t) = \beta\)</span> to be constant, we recover the relativistic gradient descent <sup id="fnref:franca_conformal"><a class="footnote-ref" href="#fn:franca_conformal">12</a></sup>, which proposes weight updates of the form:</p>
+<div class="arithmatex">\[
+\mathbf{w}(t) = \mathbf{w}(t-\tau) - \eta \frac{\mathbf{X}}{ \sqrt{\mathbf{X}^2 + k^2/\beta^2}}
+\]</div>
+<p>However, considering <span class="arithmatex">\(\beta(t) = \beta e^{\gamma t}\)</span>, we observe that <span class="arithmatex">\(\mathbf{v} \rightarrow 0\)</span> rapidly and the system ceases to learn. This is not an error in the theory; rather, it is due to the fact that we are working under a classical approximation in which the potential is considered decoupled from the metric tensor.</p>
+<p>The work of Guskov and Vanchurin on covariant gradient descent <sup id="fnref:guskov_covariant"><a class="footnote-ref" href="#fn:guskov_covariant">13</a></sup> suggests that by embedding the potential into the metric tensor, one recovers adaptive momentum-based optimizers such as <span class="arithmatex">\(\text{Adam}\)</span> <sup id="fnref:kingma_adam"><a class="footnote-ref" href="#fn:kingma_adam">14</a></sup> and, as a specific case, the <span class="arithmatex">\(\text{RMSProp}\)</span> optimizer <sup id="fnref:hinton_nn"><a class="footnote-ref" href="#fn:hinton_nn">15</a></sup>. Verifying this correspondence explicitly within the current theoretical framework remains as future work.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The proposed formalism demonstrated that a Hamiltonian framework can recover the majority of current optimization algorithms. This approach moves beyond purely heuristic updates, offering a clear physical interpretation where:</p>
+<ul>
+<li>
+<p>The loss function acts as a metric distance between system configurations.</p>
+</li>
+<li>
+<p>Temperature dictates the effective mass, weighting the importance of these distances.</p>
+</li>
+<li>
+<p>Phase space convergence is guaranteed by the evolution of internal energy.</p>
+</li>
+</ul>
+<p>These results lay the groundwork for a new class of physically-informed optimizers. By identifying where current classical approximations fail, such as the decoupling of the potential from the metric tensor, we open new avenues for incorporating covariant and relativistic dynamics into machine learning, potentially leading to more stable and faster convergence in complex loss landscapes.</p>
+<h2 id="citation">Citation</h2>
+<p>This work is versioned. To cite the <strong>specific version v0.1.0</strong>, use:</p>
+<p>Eric Hermosis. <em>Learning Dynamics</em>. Version 0.1.0. 2025.<br />
+DOI: <a href="https://doi.org/10.5281/zenodo.18071681">10.5281/zenodo.18071681</a></p>
+<p>To cite the <strong>work in general, including all versions</strong>, use the concept DOI: <a href="https://doi.org/10.5281/zenodo.18071680">10.5281/zenodo.18071680</a>.</p>
+<p>BibTeX entry for v0.1.0:</p>
+<pre><code class="language-text">@misc{hermosis2025learning,
+  author       = {Eric Hermosis},
+  title        = {Learning Dynamics},
+  year         = {2025},
+  version      = {v0.1.0},
+  howpublished = {\url{https://github.com/eric-hermosis/learning-dynamics}},
+  doi          = {10.5281/zenodo.18071681},
+  note         = {GitHub repository, archived on Zenodo}
+}
+</code></pre>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:callen_thermo">
+<p>Herbert B. Callen. <em>Thermodynamics and an Introduction to Thermostatistics</em>. Wiley, 2 edition, 1985.&#160;<a class="footnote-backref" href="#fnref:callen_thermo" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:callen_thermo" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:cannas_symph">
+<p>Ana Cannas da Silva. <em>Lectures on Symplectic Geometry</em>. Volume 1764 of Lecture Notes in Mathematics. Springer, 2001.&#160;<a class="footnote-backref" href="#fnref:cannas_symph" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:cannas_symph" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:arnold_mechanics">
+<p>Vladimir I. Arnold. <em>Mathematical Methods of Classical Mechanics</em>. Springer, 2 edition, 1989.&#160;<a class="footnote-backref" href="#fnref:arnold_mechanics" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:arnold_mechanics" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:bishop_dl">
+<p>Christopher M. Bishop and Hannah Bishop. <em>Deep Learning: Foundations and Concepts</em>. Springer International Publishing, Cham, 2024.&#160;<a class="footnote-backref" href="#fnref:bishop_dl" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:bishop_dl" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:krogh_weight_decay">
+<p>Anders Krogh and John A. Hertz. A simple weight decay can improve generalization. In <em>Advances in Neural Information Processing Systems</em>. 1992.&#160;<a class="footnote-backref" href="#fnref:krogh_weight_decay" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:krogh_weight_decay" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:baez_entropy">
+<p>John C. Baez. What is entropy? 2024. arXiv preprint. <a href="https://arxiv.org/abs/2409.09232">arXiv:2409.09232</a>.&#160;<a class="footnote-backref" href="#fnref:baez_entropy" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:lee_smooth">
+<p>John M. Lee. <em>Introduction to Smooth Manifolds</em>. Springer, 2 edition, 2013.&#160;<a class="footnote-backref" href="#fnref:lee_smooth" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:hamilton1834">
+<p>William Rowan Hamilton. On a general method in dynamics. <em>Philosophical Transactions of the Royal Society of London</em>, 124:247–308, 1834.&#160;<a class="footnote-backref" href="#fnref:hamilton1834" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:brown_expsmooth">
+<p>Robert G. Brown. <em>Exponential Smoothing: Forecasting and Control</em>. Prentice-Hall, 1956.&#160;<a class="footnote-backref" href="#fnref:brown_expsmooth" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:bottou_sgd">
+<p>Léon Bottou. Large-scale machine learning with stochastic gradient descent. In <em>Proceedings of COMPSTAT 2010</em>, 177–186. 2010.&#160;<a class="footnote-backref" href="#fnref:bottou_sgd" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:vaidhyanathan_vradam">
+<p>Pranav Vaidhyanathan, Lucas Schorling, Natalia Ares, and Michael A. Osborne. A physics-inspired optimizer: velocity regularized adam. 2025. arXiv preprint. <a href="https://arxiv.org/abs/2505.13196">arXiv:2505.13196</a>.&#160;<a class="footnote-backref" href="#fnref:vaidhyanathan_vradam" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:franca_conformal">
+<p>Guilherme França, Jeremias Sulam, Daniel P. Robinson, and Renato Vidal. Conformal symplectic and relativistic optimization. 2019. arXiv preprint. <a href="https://arxiv.org/abs/1903.04100">arXiv:1903.04100</a>.&#160;<a class="footnote-backref" href="#fnref:franca_conformal" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:guskov_covariant">
+<p>Dmitry Guskov and Vitaly Vanchurin. Covariant gradient descent. 2025. arXiv preprint. <a href="https://arxiv.org/abs/2504.05279">arXiv:2504.05279</a>.&#160;<a class="footnote-backref" href="#fnref:guskov_covariant" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:kingma_adam">
+<p>Diederik P. Kingma and Jimmy Ba. Adam: a method for stochastic optimization. 2014. arXiv preprint. <a href="https://arxiv.org/abs/1412.6980">arXiv:1412.6980</a>.&#160;<a class="footnote-backref" href="#fnref:kingma_adam" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:hinton_nn">
+<p>Geoffrey Hinton. Neural networks for machine learning, lecture 6e. Coursera (online course), 2012.&#160;<a class="footnote-backref" href="#fnref:hinton_nn" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
