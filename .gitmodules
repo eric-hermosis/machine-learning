@@ -1,0 +1,3 @@
+[submodule "machine-learning/learning-dynamics"]
+	path = machine-learning/learning-dynamics
+	url = https://github.com/eric-hermosis/learning-dynamics

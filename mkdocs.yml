@@ -1,0 +1,23 @@
+site_name: "Machine Learning"
+docs_dir: "machine-learning"
+
+theme:
+  name: material
+
+markdown_extensions:
+  - footnotes              
+  - pymdownx.arithmatex:
+      generic: true           
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - search
+  - bibtex:
+      bib_dir: "machine-learning"
+      cite_style: "pandoc"
+
+extra:
+  arithmatex:
+    enable_dollars: true          # allows inline $...$ math
