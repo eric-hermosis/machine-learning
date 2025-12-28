@@ -12,7 +12,7 @@
         <link rel="prev" href="..">
       
       
-        <link rel="next" href="appendix/">
+        <link rel="next" href="CHANGELOG/">
       
       
         
@@ -343,10 +343,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modeling" class="md-nav__link">
+  <a href="#model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modeling
+        Model
       
     </span>
   </a>
@@ -395,6 +395,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constant-temperature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constant temperature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#harmonic-potential" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Harmonic potential
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exponential-cooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exponential cooling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relativistic-hamiltonian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relativistic Hamiltonian
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -423,6 +473,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CHANGELOG/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -501,10 +579,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modeling" class="md-nav__link">
+  <a href="#model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modeling
+        Model
       
     </span>
   </a>
@@ -552,6 +630,56 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constant-temperature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constant temperature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#harmonic-potential" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Harmonic potential
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exponential-cooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exponential cooling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relativistic-hamiltonian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relativistic Hamiltonian
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -610,13 +738,13 @@
 </ul>
 <p>The theory is constructed based on the axiomatic thermodynamic framework proposed by Callen <sup id="fnref:callen_thermo"><a class="footnote-ref" href="#fn:callen_thermo">1</a></sup>. Assuming a quasi-static regime, symplectic geometry is used to describe the geometry of the model’s phase space <sup id="fnref:cannas_symph"><a class="footnote-ref" href="#fn:cannas_symph">2</a></sup>, and a Hamiltonian formalism <sup id="fnref:arnold_mechanics"><a class="footnote-ref" href="#fn:arnold_mechanics">3</a></sup> is employed to derive the model’s equations of evolution.</p>
 <p>Finally, we utilize these equations to re-derive established optimization algorithms, thereby validating the theory and offering a physical grounding for the learning process. This shows that algorithms like momentum-based Stochastic Gradient Descent <sup id="fnref:bishop_dl"><a class="footnote-ref" href="#fn:bishop_dl">4</a></sup> or regularization techniques like Weight Decay <sup id="fnref:krogh_weight_decay"><a class="footnote-ref" href="#fn:krogh_weight_decay">5</a></sup>, emerge naturally as consequences of the proposed equations of learning.</p>
+<h2 id="model">Model</h2>
 <p>The connection between the concepts of information and entropy <sup id="fnref:baez_entropy"><a class="footnote-ref" href="#fn:baez_entropy">6</a></sup> suggests that learning can be modeled as a thermodynamic process, in which its participants, known as models, evolve based on the information they perceive.</p>
-<h2 id="modeling">Modeling</h2>
 <p>A model is a simplified representation of a system, defined by a set of parameters that determine its behavior. A specific choice of a set of parameters defines what we will call a configuration.</p>
-<p>We say that a model is differentiable if its configurations are points on a smooth differential manifold <span class="arithmatex">\(\mathcal{S}\)</span> such that its learning can be defined in terms of a curve parametrized over it. <sup id="fnref:lee_smooth"><a class="footnote-ref" href="#fn:lee_smooth">7</a></sup></p>
+<p>We say that a model is differentiable if its configurations are points on a smooth differential manifold such that its learning can be defined in terms of a curve parametrized over it. <sup id="fnref:lee_smooth"><a class="footnote-ref" href="#fn:lee_smooth">7</a></sup></p>
 <p>On the other hand, we will only focus on models that are domain-agnostic, meaning they do not incorporate assumptions about the information they will ingest. In this way, the dynamics of their learning can be designed solely in terms of their configurations.</p>
 <h2 id="equilibrium">Equilibrium</h2>
-<p>To each dimension of the manifold, we can associate a parameter so that each configuration <span class="arithmatex">\(s \in \mathcal{S}\)</span> can be described in terms of coordinates:</p>
+<p>Let's consider a differentiable model whose parameters reside in a smooth manifold <span class="arithmatex">\(S\)</span>. For each dimension of the manifold, we can associate a parameter so that each configuration <span class="arithmatex">\(s \in \mathcal{S}\)</span> can be described in terms of coordinates.</p>
 <div class="arithmatex">\[
 (U/c, w^1, ..., w^d) = (w^0, \mathbf{w}) \in \mathbb{R}^{d+1}
 \]</div>
@@ -652,11 +780,11 @@ d\omega = d\beta \wedge dU + \sum_{j} dY_{j} \wedge dw^{j}
 \]</div>
 <p>The latter is known as the symplectic form <sup id="fnref2:cannas_symph"><a class="footnote-ref" href="#fn:cannas_symph">2</a></sup> and allows the phase space <span class="arithmatex">\(\Omega\)</span> to be endowed with a Hamiltonian geometric structure.</p>
 <h2 id="evolution">Evolution</h2>
-<p>For each point in the phase space, entropy is defined only for equilibrium states. This means that, to remain within the scope of a thermodynamic description, the system's evolution must be slow enough to preserve the quasi-static approximation. Under this approximation the learning curve can be viewed as a succession of equilibrium states. This approximation allows us to define canonical pairs over the entire manifold through Poisson brackets:</p>
+<p>For each point in the phase space, entropy is defined only for equilibrium states. This means that, to remain within the scope of a thermodynamic description, the system's evolution must be slow enough to preserve the quasi-static approximation, then the learning curve can be viewed as a succession of equilibrium states what allows us to define canonical pairs over the entire manifold through Poisson brackets:</p>
 <div class="arithmatex">\[
 \{U, \beta\} = 1 \qquad \{w^{i}, Y_{j} \} = \delta^{i}_{j} \qquad \text{with } \delta^{i}_{j} = \begin{cases} 1 \quad i = j \\ 0 \quad i \neq j \end{cases} 
 \]</div>
-<p>Then, we can recover an analogous to Hamilton equations <sup id="fnref:hamilton1834"><a class="footnote-ref" href="#fn:hamilton1834">8</a></sup> for thermodynamic parameters to describe the evolution of the model parameters without constraints:</p>
+<p>Then, we can recover an analogue to Hamilton's equations <sup id="fnref:hamilton1834"><a class="footnote-ref" href="#fn:hamilton1834">8</a></sup> for thermodynamic parameters to describe the evolution of the model parameters without constraints:</p>
 <div class="arithmatex">\[
 -h \frac{dw^{i}}{dt} = k\{w^{i}, H\} = k\frac{\partial H}{\partial Y_{i}} \qquad -\frac{dY_{i}}{dt} = k\{Y_{i}, H  \} = -k\frac{\partial H}{\partial w^{i}}
 \]</div>
@@ -689,11 +817,11 @@ d\omega = d\beta \wedge (dU +\sum_{j}X_{j}dw^{j}) + \beta\sum_{j} dX_{j} \wedge 
 \]</div>
 <p>We will refer to these as the Hermosis equations of learning. While they can be rigorously derived from the new symplectic form, a more streamlined derivation based on the properties of Poisson brackets is provided in the Appendix.</p>
 <h2 id="integration">Integration</h2>
-<p>The presented four equations that will allow us to describe the learning process of a model. Since they should be numerically integrated to perform optimization, let's find their integral form. By substituting the last equation into the second one and rearranging the terms, we obtain the evolution equation for the momenta <span class="arithmatex">\(X_i\)</span>​ as</p>
+<p>The presented four equations allow us to describe the learning process of a model. Since they should be numerically integrated to perform optimization, we seek their integral form. By substituting the last equation into the second one and rearranging the terms, we obtain the evolution equation for the momentum <span class="arithmatex">\(X_i\)</span>​ as</p>
 <div class="arithmatex">\[
 h\beta \frac{dX_{i}}{dt} + h\frac{d\beta}{dt} X_{i} = h \frac{d}{dt}(\beta X_{i}) = k\frac{\partial H}{\partial w^{i}}
 \]</div>
-<p>Integrating over the interval <span class="arithmatex">\([t−\tau,t]\)</span>, we obtain an update rule for the momenta:</p>
+<p>Integrating over the interval <span class="arithmatex">\([t−\tau,t]\)</span> with <span class="arithmatex">\(\tau\)</span> small enough to preserve quasi-static aproximation, we obtain an update rule for the momenta:</p>
 <div class="arithmatex">\[
 \beta(t) \mathbf{X}(t) = \beta(t-\tau) \mathbf{X}(t-\tau) -\int_{t-\tau}^{t} \mathbf{F}(t') dt'
 \]</div>
@@ -705,26 +833,26 @@ F_{i} = -\frac{k}{h}\frac{\partial H}{\partial w^{i}}
 <div class="arithmatex">\[
 \mathbf{w}(t) = \mathbf{w}(t-\tau) - \int_{t-\tau}^t \mathbf{v}(t')dt'
 \]</div>
-<p>Where <span class="arithmatex">\(\mathbf{v}\)</span> denotes the learning velocity, whose components are:</p>
+<p>Where <span class="arithmatex">\(\mathbf{v}\)</span> denotes the learning velocity, with components:</p>
 <div class="arithmatex">\[
 v^{i} = \frac{k}{h\beta} \frac{\partial H}{\partial X_{i}}
 \]</div>
 <p>This last equation tells us something important, the <span class="arithmatex">\(\beta\)</span> parameter determines the system's inertia throughout its evolution. Large values of <span class="arithmatex">\(\beta\)</span> slow down learning, while small values accelerate it.</p>
 <h2 id="application">Application</h2>
-<p>Let us now examine the connection between the proposed dynamics and the current algorithms used in the field of machine learning.</p>
+<p>Let us now examine the connection between the proposed dynamics and the current algorithms used in machine learning.</p>
 <p>In practice, a model is trained by minimizing a loss function <span class="arithmatex">\(L\)</span>, which measures the distance between a model's current state and an expected state. Drawing from classical mechanics, we propose a potential analogous to the gravitational potential:</p>
 <div class="arithmatex">\[
 V = \frac{\beta c^2}{k} L
 \]</div>
-<p>Where <span class="arithmatex">\(c^2\)</span> with units of square energy is introduced just to ensure that <span class="arithmatex">\(L\)</span> remains dimensionless. The choice of this potential is not arbitrary; it is based on the interpretation of the term <span class="arithmatex">\(\beta/k\)</span> as a thermal mass that amplifies the importance of the distance within the potential energy. Furthermore, we propose a kinetic energy in terms of a mass tensor <span class="arithmatex">\(M_{ij}\)</span>​ of the form:</p>
+<p>Where <span class="arithmatex">\(c^2\)</span> with units of square energy is introduced just to ensure that <span class="arithmatex">\(L\)</span> remains dimensionless. The choice of this potential is not arbitrary, it is based on the interpretation of the term <span class="arithmatex">\(\beta/k\)</span> as a thermal mass that amplifies the importance of the distance within the potential energy. Furthermore, we propose a kinetic energy in terms of a mass tensor <span class="arithmatex">\(M_{ij}\)</span>​ of the form:</p>
 <div class="arithmatex">\[
 K = \frac{1}{2} \sum_{i j} M^{ij} Y_{i} Y_{j} = \frac{\beta}{2k}\sum_{ij} g^{ij}X_{i} X_{j} = \frac{\beta}{2k} \mathbf{X}^2
 \]</div>
-<p>Where <span class="arithmatex">\(g_{ij}\)</span>​ is a dimensionless metric tensor, which we assume for the moment to be constant. In this way, the Hamiltonian is defined as:</p>
+<p>Where <span class="arithmatex">\(g_{ij}\)</span>​ is a dimensionless metric tensor, which we assume for now to be constant. In this way, the Hamiltonian is defined as:</p>
 <div class="arithmatex">\[
 H = \frac{\beta}{2k} \mathbf{X}^2 + \frac{\beta c^2}{k} L + E(U, \beta)
 \]</div>
-<p>Where <span class="arithmatex">\(E\)</span> is a function of the temperature, enabling us to specify an arbitrary thermal profile. Under this Hamiltonian, the velocity components are given by:</p>
+<p>Here <span class="arithmatex">\(E\)</span> is a function of the temperature, enabling us to specify an arbitrary thermal profile. Under this Hamiltonian, the velocity components are given by:</p>
 <div class="arithmatex">\[
 v^{i} = \frac{k}{h\beta} \frac{\partial H}{\partial X_{i}} = \frac{1}{h} X^{i} \qquad  X^{i} = \sum_{ij}g^{ij}X_j
 \]</div>
@@ -740,23 +868,25 @@ F_{i} = -\frac{\beta c^2}{h} \frac{\partial L}{\partial w^{i}}
 <div class="arithmatex">\[
 \mathbf{I}(t) = -\int_{t-\tau}^t\mathbf{F}(t') dt' = \frac{c^2}{h} \nabla L \int_{t-\tau}^t \beta(t')dt' 
 \]</div>
-<p>Substituting into the momentum update rule, we obtain:</p>
+<p>Substituting into the momenta update rule, we obtain:</p>
 <div class="arithmatex">\[
 \mathbf{X}(t) = \frac{\beta(t-\tau)}{\beta(t)}    \mathbf{X}(t-\tau) + \frac{c^2}{h} \left( \frac{1}{\beta(t)} \int_{t-\tau}^t \beta(t') dt'\right ) \nabla L
 \]</div>
-<p>This tells us that the momenta are updated in terms of time averages of the thermal mass. If we assume a constant temperature, that is, a constant thermal mass:</p>
+<p>This tells us that the momenta are updated in terms of time averages of the thermal mass.</p>
+<h3 id="constant-temperature">Constant temperature</h3>
+<p>Assuming a constant temperature, that is, a constant thermal mass:</p>
 <div class="arithmatex">\[
 \beta(t) = \beta
 \]</div>
-<p>We obtain a constant momentum that depends on the step size:</p>
+<p>We obtain a constant impulse that depends on the step size:</p>
 <div class="arithmatex">\[
 \mathbf{I}(t) = \frac{\beta c^2}{h} \nabla L \int_{t-\tau}^t dt' =  \frac{\tau c^2}{h}\beta \nabla L
 \]</div>
-<p>And the update rule will be a historical accumulation of the loss function:</p>
+<p>And the update rule will be a historical accumulation of the loss gradient:</p>
 <div class="arithmatex">\[
 \mathbf{X}(t) = \mathbf{X}(t-\tau) + \frac{\tau c^2}{h} \nabla L
 \]</div>
-<p>Under a suitable reparameterization, we recover the standard gradient descent or <span class="arithmatex">\(\text{SGD}\)</span> update rule <sup id="fnref2:bishop_dl"><a class="footnote-ref" href="#fn:bishop_dl">4</a></sup>:</p>
+<p>Under a suitable reparameterization, we recover the stochastic gradient descent or <span class="arithmatex">\(\text{SGD}\)</span> update rule <sup id="fnref2:bishop_dl"><a class="footnote-ref" href="#fn:bishop_dl">4</a></sup>:</p>
 <div class="arithmatex">\[
 \begin{aligned}
 \mathbf{X}(t) = \mathbf{X}(t-\tau) +  \zeta \nabla L
@@ -766,6 +896,7 @@ F_{i} = -\frac{\beta c^2}{h} \frac{\partial L}{\partial w^{i}}
 \end{aligned}
 \]</div>
 <p>Where <span class="arithmatex">\(\eta\)</span> is the learning rate and <span class="arithmatex">\(\zeta\)</span> controls the influence of the loss gradient on the momentum.</p>
+<h3 id="harmonic-potential">Harmonic potential</h3>
 <p>By adding a harmonic potential to the Hamiltonian such that:</p>
 <div class="arithmatex">\[
 H = \frac{\beta}{2k} \mathbf{X}^2 + \frac{\lambda}{2} \mathbf{w}^2 + V
@@ -774,7 +905,9 @@ H = \frac{\beta}{2k} \mathbf{X}^2 + \frac{\lambda}{2} \mathbf{w}^2 + V
 <div class="arithmatex">\[
 F_{i}' = \lambda w_{i}
 \]</div>
-<p>If we assume that the system cools exponentially, that is, with a thermal mass:</p>
+<p>Further physical explanations of the underlying mechanism, as well as possible corrections, are deferred to future work.</p>
+<h3 id="exponential-cooling">Exponential cooling</h3>
+<p>Assuming that the system temperature decreases to zero exponentially, that is, an exponentially growing thermal mass, </p>
 <div class="arithmatex">\[
 \beta(t) = \beta e^{\gamma t}
 \]</div>
@@ -782,11 +915,15 @@ F_{i}' = \lambda w_{i}
 <div class="arithmatex">\[
 \mathbf{I}(t) = \frac{\beta c^2}{h} \nabla L \int_{t-\tau}^t e^{\gamma t'} dt' = \frac{c^2}{h} \frac{1-e^{-\gamma \tau}}{\gamma} \beta e^{\gamma t}
 \]</div>
-<p>Then, the momentum will be an exponential moving average <sup id="fnref:brown_expsmooth"><a class="footnote-ref" href="#fn:brown_expsmooth">9</a></sup> of the loss gradient.</p>
+<p>Then, momentum will be an exponential moving average <sup id="fnref:brown_expsmooth"><a class="footnote-ref" href="#fn:brown_expsmooth">9</a></sup> of the loss gradient.</p>
 <div class="arithmatex">\[
 \mathbf{X}(t) = e^{-\gamma \tau} \mathbf{X}(t-\tau) + \frac{1-e^{-\gamma \tau}}{\gamma} \frac{c^2}{h} \nabla L
 \]</div>
-<p>Again, under a suitable reparameterization, the system reduces to the gradient descent algorithm with momentum and friction <sup id="fnref:bottou_sgd"><a class="footnote-ref" href="#fn:bottou_sgd">10</a></sup>:</p>
+<p>The exponential moving average is biased toward zero at early times due to its initialization, therefore, a bias correction factor should be applied <sup id="fnref:kingma_adam"><a class="footnote-ref" href="#fn:kingma_adam">10</a></sup>:</p>
+<div class="arithmatex">\[
+\hat{\mathbf{X}}(t) = \frac{\mathbf{X}(t)}{1-e^{-\gamma t}} 
+\]</div>
+<p>Under reparameterization, this recovers gradient descent with momentum and friction <sup id="fnref:bottou_sgd"><a class="footnote-ref" href="#fn:bottou_sgd">11</a></sup>:</p>
 <div class="arithmatex">\[
 \begin{aligned}
 \mathbf{X}(t) = \mu \mathbf{X}(t-\tau) + (1-\mu) \zeta \nabla L 
@@ -795,6 +932,8 @@ F_{i}' = \lambda w_{i}
 \mathbf{w}(t) = \mathbf{w}(t-\tau) - \eta \mathbf{X}(t)
 \end{aligned}
 \]</div>
+<p>Most implementations of <span class="arithmatex">\(\text{SGD}\)</span> with momentum ignore the <span class="arithmatex">\(\gamma\)</span> parameter and skip the bias correction.</p>
+<h3 id="relativistic-hamiltonian">Relativistic Hamiltonian</h3>
 <p>Lastly, we adopt a classical Hamiltonian incorporating relativistic kinetic energy, given by:</p>
 <div class="arithmatex">\[
 H = \sqrt{\mathbf{X}^2 + \frac{k^2}{\beta^2}} + V + E(U, \beta)
@@ -803,22 +942,21 @@ H = \sqrt{\mathbf{X}^2 + \frac{k^2}{\beta^2}} + V + E(U, \beta)
 <div class="arithmatex">\[
 \sqrt{\mathbf{X}^2+\frac{k^2}{\beta^2}} = \frac{k^2}{\beta^2} \sqrt{\frac{\beta^2}{k^2}\mathbf{X}^2 + 1} \approx \frac{k}{\beta} + \frac{\beta}{2k}\mathbf{X}^2 - \frac{\beta^3 (\mathbf{X}^2)^2}{8k^3} + \cdots
 \]</div>
-<p>The first term, <span class="arithmatex">\(kT\)</span>, corresponds to a rest energy, while higher-order terms are typically discarded. However, recent work on physics-inspired optimizers <sup id="fnref:vaidhyanathan_vradam"><a class="footnote-ref" href="#fn:vaidhyanathan_vradam">11</a></sup> has shown that retaining higher-order terms in the series can enhance optimization.</p>
-<p>Under a relativistic regime, the learning velocity will then be:</p>
+<p>The first term, <span class="arithmatex">\(kT\)</span>, corresponds to a rest energy, while higher-order terms are typically discarded. However, recent work on physics-inspired optimizers <sup id="fnref:vaidhyanathan_vradam"><a class="footnote-ref" href="#fn:vaidhyanathan_vradam">12</a></sup> has shown that retaining higher-order terms in the series can enhance optimization. Under a relativistic regime, the learning velocity will then be:</p>
 <div class="arithmatex">\[
 v^{i} = \frac{k}{h\beta} \frac{\partial H}{\partial X_{i}} =  \frac{k}{h\beta}  \frac{X^{i}}{ \sqrt{\mathbf{X}^2 + k^2/\beta^2}} = \frac{1}{h} \frac{X^{i}}{\sqrt{\beta^2\mathbf{X}^2/k^2 + 1}}
 \]</div>
-<p>If we consider <span class="arithmatex">\(\beta(t) = \beta\)</span> to be constant, we recover the relativistic gradient descent <sup id="fnref:franca_conformal"><a class="footnote-ref" href="#fn:franca_conformal">12</a></sup>, which proposes weight updates of the form:</p>
+<p>If we consider <span class="arithmatex">\(\beta(t) = \beta\)</span> to be constant, we recover the relativistic gradient descent <sup id="fnref:franca_conformal"><a class="footnote-ref" href="#fn:franca_conformal">13</a></sup>, which proposes weight updates of the form:</p>
 <div class="arithmatex">\[
 \mathbf{w}(t) = \mathbf{w}(t-\tau) - \eta \frac{\mathbf{X}}{ \sqrt{\mathbf{X}^2 + k^2/\beta^2}}
 \]</div>
-<p>However, considering <span class="arithmatex">\(\beta(t) = \beta e^{\gamma t}\)</span>, we observe that <span class="arithmatex">\(\mathbf{v} \rightarrow 0\)</span> rapidly and the system ceases to learn. This is not an error in the theory; rather, it is due to the fact that we are working under a classical approximation in which the potential is considered decoupled from the metric tensor.</p>
-<p>The work of Guskov and Vanchurin on covariant gradient descent <sup id="fnref:guskov_covariant"><a class="footnote-ref" href="#fn:guskov_covariant">13</a></sup> suggests that by embedding the potential into the metric tensor, one recovers adaptive momentum-based optimizers such as <span class="arithmatex">\(\text{Adam}\)</span> <sup id="fnref:kingma_adam"><a class="footnote-ref" href="#fn:kingma_adam">14</a></sup> and, as a specific case, the <span class="arithmatex">\(\text{RMSProp}\)</span> optimizer <sup id="fnref:hinton_nn"><a class="footnote-ref" href="#fn:hinton_nn">15</a></sup>. Verifying this correspondence explicitly within the current theoretical framework remains as future work.</p>
+<p>However, considering <span class="arithmatex">\(\beta(t) = \beta e^{\gamma t}\)</span>, we observe that <span class="arithmatex">\(\mathbf{v} \rightarrow 0\)</span> rapidly and the system ceases to learn. This is not an error in the theory, rather, it is due to the fact that we are working under a classical approximation in which the potential is considered decoupled from the metric tensor.</p>
+<p>The work of Guskov and Vanchurin on covariant gradient descent <sup id="fnref:guskov_covariant"><a class="footnote-ref" href="#fn:guskov_covariant">14</a></sup> suggests that by embedding the potential into the metric tensor, recovers adaptive momentum-based optimizers such as <span class="arithmatex">\(\text{Adam}\)</span> <sup id="fnref2:kingma_adam"><a class="footnote-ref" href="#fn:kingma_adam">10</a></sup> and, as a specific case, the <span class="arithmatex">\(\text{RMSProp}\)</span> optimizer <sup id="fnref:hinton_nn"><a class="footnote-ref" href="#fn:hinton_nn">15</a></sup>. Verifying this correspondence explicitly within the current theoretical framework remains as future work.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>The proposed formalism demonstrated that a Hamiltonian framework can recover the majority of current optimization algorithms. This approach moves beyond purely heuristic updates, offering a clear physical interpretation where:</p>
 <ul>
 <li>
-<p>The loss function acts as a metric distance between system configurations.</p>
+<p>The loss function acts as a metric distance between model's configurations.</p>
 </li>
 <li>
 <p>Temperature dictates the effective mass, weighting the importance of these distances.</p>
@@ -874,20 +1012,20 @@ DOI: <a href="https://doi.org/10.5281/zenodo.18071681">10.5281/zenodo.18071681</
 <li id="fn:brown_expsmooth">
 <p>Robert G. Brown. <em>Exponential Smoothing: Forecasting and Control</em>. Prentice-Hall, 1956.&#160;<a class="footnote-backref" href="#fnref:brown_expsmooth" title="Jump back to footnote 9 in the text">&#8617;</a></p>
 </li>
+<li id="fn:kingma_adam">
+<p>Diederik P. Kingma and Jimmy Ba. Adam: a method for stochastic optimization. 2014. arXiv preprint. <a href="https://arxiv.org/abs/1412.6980">arXiv:1412.6980</a>.&#160;<a class="footnote-backref" href="#fnref:kingma_adam" title="Jump back to footnote 10 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:kingma_adam" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
 <li id="fn:bottou_sgd">
-<p>Léon Bottou. Large-scale machine learning with stochastic gradient descent. In <em>Proceedings of COMPSTAT 2010</em>, 177–186. 2010.&#160;<a class="footnote-backref" href="#fnref:bottou_sgd" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+<p>Léon Bottou. Large-scale machine learning with stochastic gradient descent. In <em>Proceedings of COMPSTAT 2010</em>, 177–186. 2010.&#160;<a class="footnote-backref" href="#fnref:bottou_sgd" title="Jump back to footnote 11 in the text">&#8617;</a></p>
 </li>
 <li id="fn:vaidhyanathan_vradam">
-<p>Pranav Vaidhyanathan, Lucas Schorling, Natalia Ares, and Michael A. Osborne. A physics-inspired optimizer: velocity regularized adam. 2025. arXiv preprint. <a href="https://arxiv.org/abs/2505.13196">arXiv:2505.13196</a>.&#160;<a class="footnote-backref" href="#fnref:vaidhyanathan_vradam" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+<p>Pranav Vaidhyanathan, Lucas Schorling, Natalia Ares, and Michael A. Osborne. A physics-inspired optimizer: velocity regularized adam. 2025. arXiv preprint. <a href="https://arxiv.org/abs/2505.13196">arXiv:2505.13196</a>.&#160;<a class="footnote-backref" href="#fnref:vaidhyanathan_vradam" title="Jump back to footnote 12 in the text">&#8617;</a></p>
 </li>
 <li id="fn:franca_conformal">
-<p>Guilherme França, Jeremias Sulam, Daniel P. Robinson, and Renato Vidal. Conformal symplectic and relativistic optimization. 2019. arXiv preprint. <a href="https://arxiv.org/abs/1903.04100">arXiv:1903.04100</a>.&#160;<a class="footnote-backref" href="#fnref:franca_conformal" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+<p>Guilherme França, Jeremias Sulam, Daniel P. Robinson, and Renato Vidal. Conformal symplectic and relativistic optimization. 2019. arXiv preprint. <a href="https://arxiv.org/abs/1903.04100">arXiv:1903.04100</a>.&#160;<a class="footnote-backref" href="#fnref:franca_conformal" title="Jump back to footnote 13 in the text">&#8617;</a></p>
 </li>
 <li id="fn:guskov_covariant">
-<p>Dmitry Guskov and Vitaly Vanchurin. Covariant gradient descent. 2025. arXiv preprint. <a href="https://arxiv.org/abs/2504.05279">arXiv:2504.05279</a>.&#160;<a class="footnote-backref" href="#fnref:guskov_covariant" title="Jump back to footnote 13 in the text">&#8617;</a></p>
-</li>
-<li id="fn:kingma_adam">
-<p>Diederik P. Kingma and Jimmy Ba. Adam: a method for stochastic optimization. 2014. arXiv preprint. <a href="https://arxiv.org/abs/1412.6980">arXiv:1412.6980</a>.&#160;<a class="footnote-backref" href="#fnref:kingma_adam" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+<p>Dmitry Guskov and Vitaly Vanchurin. Covariant gradient descent. 2025. arXiv preprint. <a href="https://arxiv.org/abs/2504.05279">arXiv:2504.05279</a>.&#160;<a class="footnote-backref" href="#fnref:guskov_covariant" title="Jump back to footnote 14 in the text">&#8617;</a></p>
 </li>
 <li id="fn:hinton_nn">
 <p>Geoffrey Hinton. Neural networks for machine learning, lecture 6e. Coursera (online course), 2012.&#160;<a class="footnote-backref" href="#fnref:hinton_nn" title="Jump back to footnote 15 in the text">&#8617;</a></p>

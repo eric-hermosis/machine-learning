@@ -1,13 +1,14 @@
 \documentclass[11pt]{article}
- 
-\usepackage[utf8]{inputenc}      
-\usepackage[T1]{fontenc}          
-\usepackage{lmodern}              
-\usepackage{amsmath, amssymb}    
-\usepackage{graphicx}             
-\usepackage{hyperref}             
-\usepackage{geometry}             
-\usepackage{cite}              
+
+% ----------------- Packages -----------------
+\usepackage[utf8]{inputenc}       % UTF-8 encoding
+\usepackage[T1]{fontenc}          % Font encoding
+\usepackage{lmodern}              % Better fonts
+\usepackage{amsmath, amssymb}     % Math symbols
+\usepackage{graphicx}             % Include graphics
+\usepackage{hyperref}             % Clickable links
+\usepackage{geometry}             % Page margins
+\usepackage{cite}     
 
 \geometry{a4paper, margin=1in}
 
@@ -26,7 +27,7 @@ The work presents a fundamental theory of artificial learning that aims to expla
 
 \section*{Introduction}
 
-This work aims to develop a fundamental theory of artificial learning that both explains existing optimization algorithms and facilitates their improvement as well as the creation of new ones. To this end, only three assumptions were made about a model capable of learning:
+This work aims to develop a fundamental theory of artificial learning that explains existing optimization algorithms and facilitates their improvement, as well as the creation of new ones. To this end, only three assumptions were made about a model capable of learning:
 
 \begin{itemize}
     \item It can be described by a finite set of parameters.
@@ -34,34 +35,34 @@ This work aims to develop a fundamental theory of artificial learning that both 
     \item It makes no assumptions about the information it ingests.
 \end{itemize}
 
-The theory is constructed based on the axiomatic thermodynamic framework proposed by Callen~\cite{callen_thermo}. Assuming a quasi-static regime, symplectic geometry is used to describe the geometry of the model’s phase space~\cite{cannas_symph}, and a Hamiltonian formalism~\cite{arnold_mechanics} is employed to derive the model’s equations of evolution.
+The theory is constructed based on the axiomatic thermodynamic framework proposed by Callen~\cite{callen_thermo}. Assuming a quasi-static regime, symplectic geometry is used to describe the geometry of the model’s phase space~\cite{cannas_symph}, and a Hamiltonian formalism~\cite{arnold_mechanics} is used to derive the evolution equations of the model.
 
 Finally, we utilize these equations to re-derive established optimization algorithms, thereby validating the theory and offering a physical grounding for the learning process. This shows that algorithms like momentum-based Stochastic Gradient Descent~\cite{bishop_dl} or regularization techniques like Weight Decay~\cite{krogh_weight_decay} emerge naturally as consequences of the proposed equations of learning.
 
+\section*{Model}
+
 The connection between the concepts of information and entropy~\cite{baez_entropy} suggests that learning can be modeled as a thermodynamic process, in which its participants, known as models, evolve based on the information they perceive.
+ 
+A model is a simplified representation of a system, defined by a set of parameters that determine its behavior. A specific choice of a set of parameters defines what we will call a configuration.
 
-\section*{Modeling}
-
-A model is a simplified representation of a system, defined by a set of parameters that determine its behavior. A specific choice of a set of parameters defines what we will call a \emph{configuration}.
-
-We say that a model is differentiable if its configurations are points on a smooth differential manifold $\mathcal{S}$ such that its learning can be defined in terms of a curve parametrized over it~\cite{lee_smooth}.
+We say that a model is differentiable if its configurations are points on a smooth differential manifold such that its learning can be defined in terms of a curve parametrized over it~\cite{lee_smooth}.
 
 On the other hand, we will only focus on models that are domain-agnostic, meaning they do not incorporate assumptions about the information they will ingest. In this way, the dynamics of their learning can be designed solely in terms of their configurations.
 
 \section*{Equilibrium}
 
-To each dimension of the manifold, we can associate a parameter so that each configuration $s \in \mathcal{S}$ can be described in terms of coordinates:
+Let's consider a differentiable model whose parameters reside in a smooth manifold $S$. For each dimension of the manifold, we can associate a parameter so that each configuration $s \in \mathcal{S}$ can be described in terms of coordinates.
 
 \begin{equation}
-(U/c, w^1, \dots, w^d) = (w^0, \mathbf{w}) \in \mathbb{R}^{d+1},
+(U/c, w^1, \dots, w^d) = (w^0, \mathbf{w}) \in \mathbb{R}^{d+1}
 \end{equation}
 
-where $U$ represents the internal energy, $w^1, \dots, w^d$ are extensive parameters of the model known as weights, and $c$ is a constant such that $w^0$ is dimensionless.
+Where $U$ represents the internal energy, $w^1, \dots, w^d$ are extensive parameters of the model known as weights, and $c$ is a constant such that $w^0$ is dimensionless.
 
 We say that the model is in an equilibrium state~\cite{callen_thermo} if an entropy function $S$ can be defined over it, with units of information, and monotonically increasing with respect to energy, that is:
 
 \begin{equation}
-\frac{\partial S}{\partial U} > 0.
+\frac{\partial S}{\partial U} > 0
 \end{equation}
 
 By differentiating $S$, we can see how it changes under infinitesimal displacements of the configuration:
@@ -73,13 +74,13 @@ dS = \frac{\partial S}{\partial U} dU + \sum_{j} \frac{\partial S}{\partial w^{j
 The rates of change of entropy along the directions of energy and weights give rise to the conjugate variables:
 
 \begin{equation}
-\beta = \frac{\partial S}{\partial U}, \qquad Y_{j} = \frac{\partial S}{\partial w^{j}}, \qquad j = 1, \dots, d.
+\beta = \frac{\partial S}{\partial U} \qquad Y_{j} = \frac{\partial S}{\partial w^{j}} \qquad j = 1, \dots, d
 \end{equation}
 
 These variables are known as the intensive parameters of the model. We will refer to the $\mathbf{Y}$ intensive parameters as \emph{entropic moments}. We can also identify the temperature $T$ as the reciprocal of the parameter $\beta$ conjugate to the energy, that is:
 
 \begin{equation}
-T \equiv \frac{1}{\beta} > 0.
+T \equiv \frac{1}{\beta} > 0
 \end{equation}
 
 The entropy function is local, that is, it is only defined for each equilibrium state. Therefore, if one seeks to describe the states of the model over the entire state space, it is necessary to resort to the phase space~\cite{arnold_mechanics} defined over $\mathcal{S}$.
@@ -87,7 +88,7 @@ The entropy function is local, that is, it is only defined for each equilibrium 
 The phase space is a construction over the state space that assigns to each point its cotangent space; that is, if $(w_0, \mathbf{w})$ are coordinates of the state space, then $(w_0, \mathbf{w}, Y^0, \mathbf{Y})$ are coordinates of the phase space. Let us now consider the 1-form living in the phase space $\Omega$ given by:
 
 \begin{equation}
-\omega = \beta \, dU + \sum_{j} Y_{j} \, dw^{j} \in \Omega.
+\omega = \beta \, dU + \sum_{j} Y_{j} \, dw^{j} \in \Omega
 \end{equation}
 
 This form generalizes the notion of the differential of entropy, such that the model is in an equilibrium state if there exists an entropy function $S$ such that:
@@ -99,31 +100,31 @@ This form generalizes the notion of the differential of entropy, such that the m
 Expanding the exterior derivative of the differential 1-form $\omega$, we obtain the differential 2-form:
 
 \begin{equation}
-d\omega = d\beta \wedge dU + \sum_{j} dY_{j} \wedge dw^{j}.
+d\omega = d\beta \wedge dU + \sum_{j} dY_{j} \wedge dw^{j}
 \end{equation}
 
 The latter is known as the \emph{symplectic form}~\cite{cannas_symph} and allows the phase space $\Omega$ to be endowed with a Hamiltonian geometric structure.
 
 \section*{Evolution}
 
-For each point in the phase space, entropy is defined only for equilibrium states. This means that, to remain within the scope of a thermodynamic description, the system's evolution must be slow enough to preserve the quasi-static approximation. Under this approximation, the learning curve can be viewed as a succession of equilibrium states. This approximation allows us to define canonical pairs over the entire manifold through Poisson brackets:
+For each point in the phase space, entropy is defined only for equilibrium states. This means that, to remain within the scope of a thermodynamic description, the system's evolution must be slow enough to preserve the quasi-static approximation, then the learning curve can be viewed as a succession of equilibrium states what allows us to define canonical pairs over the entire manifold through Poisson brackets:
 
 \begin{equation}
-\{U, \beta\} = 1, \qquad \{w^{i}, Y_{j} \} = \delta^{i}_{j}, \qquad \text{with } \delta^{i}_{j} =
+\{U, \beta\} = 1 \qquad \{w^{i}, Y_{j} \} = \delta^{i}_{j} \qquad \text{with } \delta^{i}_{j} =
 \begin{cases} 
 1 & i = j \\ 
 0 & i \neq j 
-\end{cases}.
+\end{cases}
 \end{equation}
 
 Then, we can recover an analogue to Hamilton's equations~\cite{hamilton1834} for thermodynamic parameters to describe the evolution of the model parameters without constraints:
 
 \begin{equation}
--h \frac{dw^{i}}{dt} = k\{w^{i}, H\} = k\frac{\partial H}{\partial Y_{i}}, \qquad -\frac{dY_{i}}{dt} = k\{Y_{i}, H  \} = -k\frac{\partial H}{\partial w^{i}},
+-h \frac{dw^{i}}{dt} = k\{w^{i}, H\} = k\frac{\partial H}{\partial Y_{i}} \qquad -\frac{dY_{i}}{dt} = k\{Y_{i}, H  \} = -k\frac{\partial H}{\partial w^{i}}
 \end{equation}
 
 \begin{equation}
--\frac{dU}{dt} = k\{U, H \} = k\frac{\partial H}{\partial \beta}, \qquad -h\frac{d\beta}{dt} = k\{\beta, H\} = -k\frac{\partial H}{\partial U},
+-\frac{dU}{dt} = k\{U, H \} = k\frac{\partial H}{\partial \beta} \qquad -h\frac{d\beta}{dt} = k\{\beta, H\} = -k\frac{\partial H}{\partial U}
 \end{equation}
 
 where $h$ is the unit of action and $k$ is the unit of information, introduced to maintain consistent units.
@@ -131,35 +132,35 @@ where $h$ is the unit of action and $k$ is the unit of information, introduced t
 The problem with this formulation is that it leads to dynamics in which the model evolves in closed orbits. To address this, we introduce a coupling of the intensive parameters with the temperature of the form:
 
 \begin{equation}
-Y_{i} = \beta X_{i}, \qquad i = 1, \dots, d.
+Y_{i} = \beta X_{i} \qquad i = 1, \dots, d.
 \end{equation}
 
 We will refer to the $\mathbf{X}$ parameters as \emph{energy moments}. This coupling is not arbitrary; rather, it arises directly from the energy representation of thermodynamics:
 
 \begin{equation}
-dU = T \, dS - \sum_{j} X_{j} \, dw^{j}.
+dU = T \, dS - \sum_{j} X_{j} \, dw^{j}
 \end{equation}
 
 The coupling deforms the symplectic structure that describes the geometry of the phase space. By substituting the coupling into the 2-form $d\omega$, we obtain:
 
 \begin{equation}
-d\omega = d\beta \wedge \Bigl(dU + \sum_{j} X_{j} \, dw^{j}\Bigr) + \beta \sum_{j} dX_{j} \wedge dw^{j},
+d\omega = d\beta \wedge \Bigl(dU + \sum_{j} X_{j} \, dw^{j}\Bigr) + \beta \sum_{j} dX_{j} \wedge dw^{j}
 \end{equation}
 
-which remains a non-degenerate symplectic form for $\beta > 0$, a condition already imposed. The new non-negative Poisson brackets yield:
+Which remains a non-degenerate symplectic form for $\beta > 0$, a condition already imposed. The new non-negative Poisson brackets yield:
 
 \begin{equation}
-\{U, \beta \} = 1, \qquad \{w^{i}, X_{j}\} = \delta^{i}_j, \qquad \{U, X_{i}\} = -\frac{1}{\beta} X_{i}.
+\{U, \beta \} = 1 \qquad \{w^{i}, X_{j}\} = \delta^{i}_j \qquad \{U, X_{i}\} = -\frac{1}{\beta} X_{i}
 \end{equation}
 
 Their respective equations of motion are given by:
 
 \begin{equation}
--h\frac{dw^{i}}{dt} = \frac{k}{\beta} \frac{\partial H}{\partial X_{i}}, \qquad -h\frac{dX_{i}}{dt} = -\frac{k}{\beta} \frac{\partial H}{\partial w^{i}} + \frac{k X_{i}}{\beta} \frac{\partial H}{\partial U},
+-h\frac{dw^{i}}{dt} = \frac{k}{\beta} \frac{\partial H}{\partial X_{i}} \qquad -h\frac{dX_{i}}{dt} = -\frac{k}{\beta} \frac{\partial H}{\partial w^{i}} + \frac{k X_{i}}{\beta} \frac{\partial H}{\partial U}
 \end{equation}
 
 \begin{equation}
--h\frac{dU}{dt} = k \frac{\partial H}{\partial \beta} - \frac{k}{\beta} \sum_{j} X_{j} \frac{\partial H}{\partial X_{j}}, \qquad -h\frac{d\beta}{dt} = -k\frac{\partial H}{\partial U}.
+-h\frac{dU}{dt} = k \frac{\partial H}{\partial \beta} - \frac{k}{\beta} \sum_{j} X_{j} \frac{\partial H}{\partial X_{j}} \qquad -h\frac{d\beta}{dt} = -k\frac{\partial H}{\partial U}
 \end{equation}
 
 We will refer to these as the \emph{Hermosis equations of learning}. While they can be rigorously derived from the new symplectic form, a more streamlined derivation based on the properties of Poisson brackets is provided in the Appendix.
@@ -170,170 +171,214 @@ We will refer to these as the \emph{Hermosis equations of learning}. While they 
 The presented four equations allow us to describe the learning process of a model. Since they must be numerically integrated to perform optimization, we seek their integral form. By substituting the last equation into the second one and rearranging terms, we obtain the evolution equation for the momenta $X_i$ as:
 
 \begin{equation}
-h \beta \frac{dX_{i}}{dt} + h \frac{d\beta}{dt} X_{i} = h \frac{d}{dt} (\beta X_{i}) = k \frac{\partial H}{\partial w^{i}}.
+h \beta \frac{dX_{i}}{dt} + h \frac{d\beta}{dt} X_{i} = h \frac{d}{dt} (\beta X_{i}) = k \frac{\partial H}{\partial w^{i}}
 \end{equation}
 
 Integrating over the interval $[t-\tau, t]$, we obtain an update rule for the momenta:
 
 \begin{equation}
-\beta(t) \mathbf{X}(t) = \beta(t-\tau) \mathbf{X}(t-\tau) - \int_{t-\tau}^{t} \mathbf{F}(t') \, dt',
+\beta(t) \mathbf{X}(t) = \beta(t-\tau) \mathbf{X}(t-\tau) - \int_{t-\tau}^{t} \mathbf{F}(t') \, dt'
 \end{equation}
 
-where $\mathbf{F}$ represents a generalized force, whose components are given by:
+Where $\mathbf{F}$ represents a generalized force, whose components are given by:
 
 \begin{equation}
-F_{i} = -\frac{k}{h} \frac{\partial H}{\partial w^{i}}.
+F_{i} = -\frac{k}{h} \frac{\partial H}{\partial w^{i}}
 \end{equation}
 
 On the other hand, integrating the first equation over the same interval, we obtain an update rule for the weights:
 
 \begin{equation}
-\mathbf{w}(t) = \mathbf{w}(t-\tau) - \int_{t-\tau}^{t} \mathbf{v}(t') \, dt',
+\mathbf{w}(t) = \mathbf{w}(t-\tau) - \int_{t-\tau}^{t} \mathbf{v}(t') \, dt'
 \end{equation}
 
 where $\mathbf{v}$ denotes the learning velocity, with components:
 
 \begin{equation}
-v^{i} = \frac{k}{h \beta} \frac{\partial H}{\partial X_{i}}.
+v^{i} = \frac{k}{h \beta} \frac{\partial H}{\partial X_{i}}
 \end{equation}
 
-This last equation highlights an important point: the parameter $\beta$ determines the system's inertia throughout its evolution. Large values of $\beta$ slow down learning, while small values accelerate it.
+This last equation tells us something important, the $\beta$ parameter determines the system's inertia throughout its evolution. Large values of $\beta$ slow down learning, while small values accelerate it.
 
-\section{Application}
+\section*{Application}
 
 Let us now examine the connection between the proposed dynamics and current algorithms used in machine learning.
 
 In practice, a model is trained by minimizing a loss function $L$, which measures the distance between a model's current state and an expected state. Drawing from classical mechanics, we propose a potential analogous to the gravitational potential:
 
 \begin{equation}
-V = \frac{\beta c^2}{k} L,
+V = \frac{\beta c^2}{k} L
 \end{equation}
 
-where $c^2$, with units of square energy, is introduced to ensure that $L$ remains dimensionless. The choice of this potential is not arbitrary; it is based on the interpretation of the term $\beta/k$ as a thermal mass that amplifies the importance of the distance within the potential energy. Furthermore, we propose a kinetic energy in terms of a mass tensor $M_{ij}$ of the form:
+where $c^2$, with units of square energy, is introduced to ensure that $L$ remains dimensionless. The choice of this potential is not arbitrary, it is based on the interpretation of the term $\beta/k$ as a thermal mass that amplifies the importance of the distance within the potential energy. Furthermore, we propose a kinetic energy in terms of a mass tensor $M_{ij}$ of the form:
 
 \begin{equation}
-K = \frac{1}{2} \sum_{ij} M^{ij} Y_{i} Y_{j} = \frac{\beta}{2k} \sum_{ij} g^{ij} X_{i} X_{j} = \frac{\beta}{2k} \mathbf{X}^2,
+K = \frac{1}{2} \sum_{ij} M^{ij} Y_{i} Y_{j} = \frac{\beta}{2k} \sum_{ij} g^{ij} X_{i} X_{j} = \frac{\beta}{2k} \mathbf{X}^2
 \end{equation}
 
-where $g_{ij}$ is a dimensionless metric tensor, assumed for the moment to be constant. In this way, the Hamiltonian is defined as:
+
+Here $g_{ij}$ is a dimensionless metric tensor, which we assume for now to be constant. In this way, the Hamiltonian is defined as:
 
 \begin{equation}
-H = \frac{\beta}{2k} \mathbf{X}^2 + \frac{\beta c^2}{k} L + E(U, \beta),
+H = \frac{\beta}{2k} \mathbf{X}^2 + \frac{\beta c^2}{k} L + E(U, \beta)
 \end{equation}
 
-where $E$ is a function of the temperature, enabling specification of an arbitrary thermal profile. Under this Hamiltonian, the velocity components are:
+Where $E$ is a function of the temperature, enabling us to specify an arbitrary thermal profile. Under this Hamiltonian, the velocity components are given by:
 
 \begin{equation}
-v^{i} = \frac{k}{h \beta} \frac{\partial H}{\partial X_{i}} = \frac{1}{h} X^{i}, \qquad X^{i} = \sum_{j} g^{ij} X_j.
+v^{i} = \frac{k}{h \beta} \frac{\partial H}{\partial X_{i}} = \frac{1}{h} X^{i} \qquad X^{i} = \sum_{j} g^{ij} X_j
 \end{equation}
 
 Applying an Euler discretization, the weight update rule can be approximated as:
 
 \begin{equation}
-\mathbf{w}(t) \approx \mathbf{w}(t-\tau) - \frac{\tau}{h} \mathbf{X}(t).
+\mathbf{w}(t) \approx \mathbf{w}(t-\tau) - \frac{\tau}{h} \mathbf{X}(t)
 \end{equation}
 
-The generalized force driving the learning process has components:
+On the other hand, the generalized force driving the learning process has the following components:
 
 \begin{equation}
-F_{i} = -\frac{\beta c^2}{h} \frac{\partial L}{\partial w^{i}}.
+F_{i} = -\frac{\beta c^2}{h} \frac{\partial L}{\partial w^{i}}
 \end{equation}
 
-Evaluating the components and integrating, we obtain the impulse as a function of the loss gradient:
+By evaluating the components and performing the integration, we arrive at an expression for the impulse as a function of the loss gradient.
 
 \begin{equation}
-\mathbf{I}(t) = -\int_{t-\tau}^{t} \mathbf{F}(t') \, dt' = \frac{c^2}{h} \nabla L \int_{t-\tau}^{t} \beta(t') \, dt'.
+\mathbf{I}(t) = -\int_{t-\tau}^{t} \mathbf{F}(t') \, dt' = \frac{c^2}{h} \nabla L \int_{t-\tau}^{t} \beta(t') \, dt'
 \end{equation}
 
-Substituting into the momentum update rule:
+Substituting into the momenta update rule:
 
 \begin{equation}
-\mathbf{X}(t) = \frac{\beta(t-\tau)}{\beta(t)} \mathbf{X}(t-\tau) + \frac{c^2}{h} \left( \frac{1}{\beta(t)} \int_{t-\tau}^{t} \beta(t') \, dt' \right) \nabla L.
+\mathbf{X}(t) = \frac{\beta(t-\tau)}{\beta(t)} \mathbf{X}(t-\tau) + \frac{c^2}{h} \left( \frac{1}{\beta(t)} \int_{t-\tau}^{t} \beta(t') \, dt' \right) \nabla L
 \end{equation}
 
-Assuming a constant temperature, $\beta(t) = \beta$, we obtain:
+This tells us that the momenta are updated in terms of time averages of the thermal mass.
+
+\subsection*{Constant temperature}
+
+Assuming a constant temperature, that is, a constant thermal mass:
+
+$$
+\beta(t) = \beta
+$$
+
+We obtain a constant impulse that depends on the step size:
 
 \begin{equation}
-\mathbf{I}(t) = \frac{\tau c^2}{h} \beta \nabla L, \qquad 
+\mathbf{I}(t)
+= \frac{\beta c^2}{h} \int_{t-\tau}^{t} \nabla L \, dt'
+= \frac{\beta c^2 \tau}{h} \nabla L
+\end{equation}
+
+
+And the update rule will be a historical accumulation of the loss gradient:
+
+\begin{equation}
 \mathbf{X}(t) = \mathbf{X}(t-\tau) + \frac{\tau c^2}{h} \nabla L.
 \end{equation}
 
-Under suitable reparameterization, we recover the standard gradient descent or SGD update rule~\cite{bishop_dl}:
+Under suitable reparameterization, we recover the stochastic gradient descent or \text{SGD} update rule~\cite{bishop_dl}:
 
 \begin{equation}
 \begin{aligned}
 \mathbf{X}(t) &= \mathbf{X}(t-\tau) + \zeta \nabla L, \\
-\mathbf{w}(t) &\approx \mathbf{w}(t-\tau) - \eta \mathbf{X}(t),
+\mathbf{w}(t) &\approx \mathbf{w}(t-\tau) - \eta \mathbf{X}(t)
 \end{aligned}
 \end{equation}
 
-where $\eta$ is the learning rate and $\zeta$ controls the influence of the loss gradient on momentum.
+Where $\eta$ is the learning rate and $\zeta$ controls the influence of the loss gradient on momentum.
+
+\subsection*{Harmonic potential}
 
 By adding a harmonic potential to the Hamiltonian:
 
 \begin{equation}
-H = \frac{\beta}{2k} \mathbf{X}^2 + \frac{\lambda}{2} \mathbf{w}^2 + V,
+H = \frac{\beta}{2k} \mathbf{X}^2 + \frac{\lambda}{2} \mathbf{w}^2 + V
 \end{equation}
 
-the generalized force now includes a term consistent with gradient descent with weight decay~\cite{krogh_weight_decay}:
+
+The generalized force now includes a term consistent with that used in gradient descent with weight decay ~\cite{krogh_weight_decay}, which proposes adding a term $\lambda \mathbf{w}$ to the loss gradient. This is because an extra term is now added to the force:
 
 \begin{equation}
-F'_{\alpha} = \lambda w_{\alpha}.
+F'_{i} = \lambda w_{i}
 \end{equation}
 
-Assuming an exponentially growing thermal mass, $\beta(t) = \beta e^{\gamma t}$, the impulse becomes:
+Further physical explanations of the underlying mechanism, as well as possible corrections, are deferred to future work.
+
+\subsection*{Exponential cooling}
+
+Assuming that the system temperature decreases to zero exponentially, that is, an exponentially growing thermal mass:
 
 \begin{equation}
-\mathbf{I}(t) = \frac{c^2}{h} \frac{1-e^{-\gamma \tau}}{\gamma} \beta e^{\gamma t} \nabla L,
-\end{equation}
+\beta(t) = \beta e^{\gamma t}
+\end{equation} 
 
-leading to momenta as an exponential moving average~\cite{brown_expsmooth}:
+We obtain an impulse given by:
 
 \begin{equation}
-\mathbf{X}(t) = e^{-\gamma \tau} \mathbf{X}(t-\tau) + \frac{1-e^{-\gamma \tau}}{\gamma} \frac{c^2}{h} \nabla L.
+\mathbf{I}(t) = \frac{c^2}{h} \frac{1-e^{-\gamma \tau}}{\gamma} \beta e^{\gamma t} \nabla L
 \end{equation}
+
+Then, momentum will be an exponential moving average~\cite{brown_expsmooth} of the loss gradient:
+
+\begin{equation}
+\mathbf{X}(t) = e^{-\gamma \tau} \mathbf{X}(t-\tau) + \frac{1-e^{-\gamma \tau}}{\gamma} \frac{c^2}{h} \nabla L
+\end{equation}
+
+The exponential moving average is biased toward zero at early times due to its initialization, therefore, a bias correction factor should be applied ~\cite{kingma_adam}:
+
+\begin{equation}
+\hat{\mathbf{X}}(t) = \frac{\mathbf{X}(t)}{1-e^{-\gamma t}} 
+\end{equation} 
 
 Under reparameterization, this recovers gradient descent with momentum and friction~\cite{bottou_sgd}:
 
 \begin{equation}
 \begin{aligned}
-\mathbf{X}(t) &= \mu \mathbf{X}(t-\tau) + (1-\mu) \zeta \nabla L, \\
-\mathbf{w}(t) &= \mathbf{w}(t-\tau) - \eta \mathbf{X}(t).
+\mathbf{X}(t) &= \mu \mathbf{X}(t-\tau) + (1-\mu) \zeta \nabla L \\
+\mathbf{w}(t) &= \mathbf{w}(t-\tau) - \eta \mathbf{X}(t)
 \end{aligned}
 \end{equation}
 
-Finally, adopting a relativistic kinetic energy Hamiltonian:
+Most implementations of $\text{SGD}$ with momentum ignore the $\gamma$ parameter and skip the bias correction.
+  
+\subsection*{Relativistic Hamiltonian}
+
+Lastly, we adopt a classical Hamiltonian incorporating relativistic kinetic energy, given by:
 
 \begin{equation}
-H = \sqrt{\mathbf{X}^2 + \frac{k^2}{\beta^2}} + V + E(U, \beta),
+H = \sqrt{\mathbf{X}^2 + \frac{k^2}{\beta^2}} + V + E(U, \beta)
 \end{equation}
 
-which reduces to the classical case for $|\mathbf{X}| \ll k/\beta$:
+This Hamiltonian is a generalization of the previous one, since for small momenta $|\mathbf{X}| \ll k/\beta$, the kinetic energy can be approximated as:
 
 \begin{equation}
 \sqrt{\mathbf{X}^2+\frac{k^2}{\beta^2}} \approx \frac{k}{\beta} + \frac{\beta}{2k}\mathbf{X}^2 - \frac{\beta^3 (\mathbf{X}^2)^2}{8k^3} + \dots
 \end{equation}
 
-The corresponding learning velocity is:
+The first term, $kT$, corresponds to a rest energy, while higher-order terms are typically discarded. However, recent work on physics-inspired optimizers \cite{vaidhyanathan_vradam} has shown that retaining higher-order terms in the series can enhance optimization. Under a relativistic regime, the learning velocity will then be:
 
 \begin{equation}
-v^{i} = \frac{k}{h \beta} \frac{\partial H}{\partial X_{i}} = \frac{1}{h} \frac{X^{i}}{\sqrt{\beta^2 \mathbf{X}^2/k^2 + 1}}.
+v^{i} = \frac{k}{h\beta} \frac{\partial H}{\partial X_{i}} =  \frac{k}{h\beta}  \frac{X^{i}}{ \sqrt{\mathbf{X}^2 + k^2/\beta^2}} = \frac{1}{h} \frac{X^{i}}{\sqrt{\beta^2\mathbf{X}^2/k^2 + 1}}
 \end{equation}
 
-For constant $\beta$, this recovers relativistic gradient descent~\cite{franca_conformal}:
+If we consider $\beta(t) = \beta$ to be constant, we recover the relativistic gradient descent ~\cite{franca_conformal} which proposes weight updates of the form:
 
 \begin{equation}
-\mathbf{w}(t) = \mathbf{w}(t-\tau) - \eta \frac{\mathbf{X}}{\sqrt{\mathbf{X}^2 + k^2/\beta^2}}.
+\mathbf{w}(t) = \mathbf{w}(t-\tau) - \eta \frac{\mathbf{X}}{ \sqrt{\mathbf{X}^2 + k^2/\beta^2}}
 \end{equation}
 
-Embedding the potential into the metric tensor, following Guskov and Vanchurin~\cite{guskov_covariant}, recovers adaptive momentum-based optimizers such as Adam~\cite{kingma_adam} and, as a special case, RMSProp~\cite{hinton_nn}. Explicit verification within this framework remains as future work.
+However, considering $\beta(t) = \beta e^{\gamma t}$, we observe that $\mathbf{v} \rightarrow 0$ rapidly and the system ceases to learn. This is not an error in the theory, rather, it is due to the fact that we are working under a classical approximation in which the potential is considered decoupled from the metric tensor.
+
+The work of Guskov and Vanchurin on covariant gradient descent ~\cite{guskov_covariant} suggests that by embedding the potential into the metric tensor, recovers adaptive momentum-based optimizers such as $\text{Adam}$ ~\cite{kingma_adam} and, as a specific case, the $\text{RMSProp}$ optimizer \cite{hinton_nn}. Verifying this correspondence explicitly within the current theoretical framework remains as future work.
 
 \section*{Conclusion}
 
 The proposed formalism demonstrates that a Hamiltonian framework can recover the majority of current optimization algorithms. This approach moves beyond purely heuristic updates, offering a clear physical interpretation where:
 
 \begin{itemize}
-    \item The loss function acts as a metric distance between system configurations.
+    \item The loss function acts as a metric distance between model's configurations.
     \item Temperature dictates the effective mass, weighting the importance of these distances.
     \item Phase space convergence is guaranteed by the evolution of internal energy.
 \end{itemize}
@@ -367,7 +412,7 @@ Given that we know:
 \{Y_{i}, H\} = -\frac{\partial H}{\partial w^{i}}, \qquad \{\beta, H\} = -\frac{\partial H}{\partial U},
 \end{equation}
 
-we substitute these values to obtain the Poisson brackets of the system in terms of the momenta $\mathbf{X}$:
+We substitute these values to obtain the Poisson brackets of the system in terms of the momenta $\mathbf{X}$:
 
 \begin{equation}
 -\frac{\partial H}{\partial w^{i}} = \beta \{X_{i}, H\} - X_{i} \frac{\partial H}{\partial U} \quad \Rightarrow \quad 
@@ -387,7 +432,7 @@ To reconcile the evolution of the internal energy with the proposed evolution, w
 \left(\frac{\partial H}{\partial \beta} \right)_{\mathbf{X}} + \sum_{j} \left(\frac{\partial H}{\partial X_{j}} \right)_{\beta, X_{i \neq j}} \left(\frac{\partial X_{j}}{\partial \beta} \right)_{\mathbf{Y}},
 \end{equation}
 
-where the subscripts indicate which parameters are considered constant.
+Where the subscripts indicate which parameters are considered constant.
 
 From the coupling relation:
 
@@ -416,7 +461,7 @@ Then:
 Finally, the equation containing the changes of $H$ in the direction $\partial/\partial U$ remains identical, since the variable $U$ is not coupled in the same way as $\beta$.
 
 
-\bibliographystyle{unsrt} 
-\bibliography{refs}       
+\bibliographystyle{unsrt}  % or plain, alpha, etc.
+\bibliography{refs}        % refs.bib file
 
 \end{document}
