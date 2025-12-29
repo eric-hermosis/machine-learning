@@ -513,6 +513,34 @@
   
   
     <li class="md-nav__item">
+      <a href="abstract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abstract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="appendix/" class="md-nav__link">
         
   
@@ -724,7 +752,7 @@
 
 <h1 id="learning-dynamics">Learning Dynamics</h1>
 <h2 id="introduction">Introduction</h2>
-<p>This work aims to develop a fundamental theory of artificial learning that both explains existing optimization algorithms and facilitates their improvement as well as the creation of new ones. To this end, only three assumptions were made about a model capable of learning:</p>
+<p>This work aims to develop a fundamental theory of artificial learning that explains existing optimization algorithms, facilitates their improvement, and enables the creation of new ones. To this end, we make only three assumptions about a model capable of learning:</p>
 <ul>
 <li>
 <p>It can be described by a finite set of parameters.</p>
@@ -737,11 +765,11 @@
 </li>
 </ul>
 <p>The theory is constructed based on the axiomatic thermodynamic framework proposed by Callen <sup id="fnref:callen_thermo"><a class="footnote-ref" href="#fn:callen_thermo">1</a></sup>. Assuming a quasi-static regime, symplectic geometry is used to describe the geometry of the model’s phase space <sup id="fnref:cannas_symph"><a class="footnote-ref" href="#fn:cannas_symph">2</a></sup>, and a Hamiltonian formalism <sup id="fnref:arnold_mechanics"><a class="footnote-ref" href="#fn:arnold_mechanics">3</a></sup> is employed to derive the model’s equations of evolution.</p>
-<p>Finally, we utilize these equations to re-derive established optimization algorithms, thereby validating the theory and offering a physical grounding for the learning process. This shows that algorithms like momentum-based Stochastic Gradient Descent <sup id="fnref:bishop_dl"><a class="footnote-ref" href="#fn:bishop_dl">4</a></sup> or regularization techniques like Weight Decay <sup id="fnref:krogh_weight_decay"><a class="footnote-ref" href="#fn:krogh_weight_decay">5</a></sup>, emerge naturally as consequences of the proposed equations of learning.</p>
+<p>Finally, we use these equations to re-derive established optimization algorithms, thereby validating the theory and offering a physical grounding for the learning process. This shows that algorithms like momentum-based Stochastic Gradient Descent <sup id="fnref:bishop_dl"><a class="footnote-ref" href="#fn:bishop_dl">4</a></sup> or regularization techniques like Weight Decay <sup id="fnref:krogh_weight_decay"><a class="footnote-ref" href="#fn:krogh_weight_decay">5</a></sup> emerge naturally as consequences of the proposed equations of learning.</p>
 <h2 id="model">Model</h2>
-<p>The connection between the concepts of information and entropy <sup id="fnref:baez_entropy"><a class="footnote-ref" href="#fn:baez_entropy">6</a></sup> suggests that learning can be modeled as a thermodynamic process, in which its participants, known as models, evolve based on the information they perceive.</p>
+<p>The connection between the concepts of information and entropy <sup id="fnref:baez_entropy"><a class="footnote-ref" href="#fn:baez_entropy">6</a></sup> suggests that learning can be modeled as a thermodynamic process, where the participants, known as models, evolve based on the information they perceive.</p>
 <p>A model is a simplified representation of a system, defined by a set of parameters that determine its behavior. A specific choice of a set of parameters defines what we will call a configuration.</p>
-<p>We say that a model is differentiable if its configurations are points on a smooth differential manifold such that its learning can be defined in terms of a curve parametrized over it. <sup id="fnref:lee_smooth"><a class="footnote-ref" href="#fn:lee_smooth">7</a></sup></p>
+<p>We say that a model is differentiable if its configurations are points on a smooth differential manifold, allowing learning to be defined in terms of a parametrized curve over manifold. <sup id="fnref:lee_smooth"><a class="footnote-ref" href="#fn:lee_smooth">7</a></sup></p>
 <p>On the other hand, we will only focus on models that are domain-agnostic, meaning they do not incorporate assumptions about the information they will ingest. In this way, the dynamics of their learning can be designed solely in terms of their configurations.</p>
 <h2 id="equilibrium">Equilibrium</h2>
 <p>Let's consider a differentiable model whose parameters reside in a smooth manifold <span class="arithmatex">\(S\)</span>. For each dimension of the manifold, we can associate a parameter so that each configuration <span class="arithmatex">\(s \in \mathcal{S}\)</span> can be described in terms of coordinates.</p>
@@ -749,7 +777,7 @@
 (U/c, w^1, ..., w^d) = (w^0, \mathbf{w}) \in \mathbb{R}^{d+1}
 \]</div>
 <p>Where <span class="arithmatex">\(U\)</span> represents the internal energy, <span class="arithmatex">\(w^1, \dots, w^d\)</span> are extensive parameters of the model known as weights, and <span class="arithmatex">\(c\)</span> is a constant such that <span class="arithmatex">\(w^0\)</span> is dimensionless.</p>
-<p>We say that the model is in an equilibrium state <sup id="fnref2:callen_thermo"><a class="footnote-ref" href="#fn:callen_thermo">1</a></sup> if an entropy function <span class="arithmatex">\(S\)</span> can be defined over it, with units of information, and monotonically increasing with respect to energy, that is:</p>
+<p>We say that the model is in an equilibrium state <sup id="fnref2:callen_thermo"><a class="footnote-ref" href="#fn:callen_thermo">1</a></sup> if an entropy function <span class="arithmatex">\(S\)</span> can be defined over it, measured in units of information, and monotonically increasing with respect to energy, that is:</p>
 <div class="arithmatex">\[
 \frac{\partial S}{\partial U} &gt; 0
 \]</div>
@@ -784,7 +812,7 @@ d\omega = d\beta \wedge dU + \sum_{j} dY_{j} \wedge dw^{j}
 <div class="arithmatex">\[
 \{U, \beta\} = 1 \qquad \{w^{i}, Y_{j} \} = \delta^{i}_{j} \qquad \text{with } \delta^{i}_{j} = \begin{cases} 1 \quad i = j \\ 0 \quad i \neq j \end{cases} 
 \]</div>
-<p>Then, we can recover an analogue to Hamilton's equations <sup id="fnref:hamilton1834"><a class="footnote-ref" href="#fn:hamilton1834">8</a></sup> for thermodynamic parameters to describe the evolution of the model parameters without constraints:</p>
+<p>Then, we can recover an analogue to Hamilton's equations <sup id="fnref:hamilton1834"><a class="footnote-ref" href="#fn:hamilton1834">8</a></sup> for thermodynamic parameters describing the evolution of the model parameters without constraints:</p>
 <div class="arithmatex">\[
 -h \frac{dw^{i}}{dt} = k\{w^{i}, H\} = k\frac{\partial H}{\partial Y_{i}} \qquad -\frac{dY_{i}}{dt} = k\{Y_{i}, H  \} = -k\frac{\partial H}{\partial w^{i}}
 \]</div>
@@ -792,7 +820,7 @@ d\omega = d\beta \wedge dU + \sum_{j} dY_{j} \wedge dw^{j}
 -\frac{dU}{dt} = k\{U, H \} = k\frac{\partial H}{\partial \beta} \qquad -h\frac{d\beta}{dt} = k\{\beta, H\} = -k\frac{\partial H}{\partial U}
 \]</div>
 <p>Where <span class="arithmatex">\(h\)</span> is the unit of action and <span class="arithmatex">\(k\)</span> is the unit of information, which are introduced to maintain consistent units.</p>
-<p>The problem with this formulation is that it leads to a dynamics in which the model evolves in closed orbits. To address this, we introduce a coupling of the intensive parameters with the temperature of the form:</p>
+<p>The problem with this formulation is that it leads to dynamics in which the model evolves in closed orbits. To address this, we introduce a coupling of the intensive parameters with the temperature of the form:</p>
 <div class="arithmatex">\[
 Y_{i} = \beta X_{i} \qquad i = 1, ..., d
 \]</div>
@@ -817,11 +845,11 @@ d\omega = d\beta \wedge (dU +\sum_{j}X_{j}dw^{j}) + \beta\sum_{j} dX_{j} \wedge 
 \]</div>
 <p>We will refer to these as the Hermosis equations of learning. While they can be rigorously derived from the new symplectic form, a more streamlined derivation based on the properties of Poisson brackets is provided in the Appendix.</p>
 <h2 id="integration">Integration</h2>
-<p>The presented four equations allow us to describe the learning process of a model. Since they should be numerically integrated to perform optimization, we seek their integral form. By substituting the last equation into the second one and rearranging the terms, we obtain the evolution equation for the momentum <span class="arithmatex">\(X_i\)</span>​ as</p>
+<p>The presented four equations allow us to describe the learning process of a model. Since they need to be numerically integrated to perform optimization, we seek their integral form. By substituting the last equation into the second one and rearranging the terms, we obtain the evolution equation for the momentum <span class="arithmatex">\(X_i\)</span>​ as</p>
 <div class="arithmatex">\[
 h\beta \frac{dX_{i}}{dt} + h\frac{d\beta}{dt} X_{i} = h \frac{d}{dt}(\beta X_{i}) = k\frac{\partial H}{\partial w^{i}}
 \]</div>
-<p>Integrating over the interval <span class="arithmatex">\([t−\tau,t]\)</span> with <span class="arithmatex">\(\tau\)</span> small enough to preserve quasi-static aproximation, we obtain an update rule for the momenta:</p>
+<p>Integrating over the interval <span class="arithmatex">\([t-\tau,t]\)</span> with <span class="arithmatex">\(\tau\)</span> small enough to preserve quasi-static aproximation, we obtain an update rule for the momenta:</p>
 <div class="arithmatex">\[
 \beta(t) \mathbf{X}(t) = \beta(t-\tau) \mathbf{X}(t-\tau) -\int_{t-\tau}^{t} \mathbf{F}(t') dt'
 \]</div>
@@ -886,7 +914,7 @@ F_{i} = -\frac{\beta c^2}{h} \frac{\partial L}{\partial w^{i}}
 <div class="arithmatex">\[
 \mathbf{X}(t) = \mathbf{X}(t-\tau) + \frac{\tau c^2}{h} \nabla L
 \]</div>
-<p>Under a suitable reparameterization, we recover the stochastic gradient descent or <span class="arithmatex">\(\text{SGD}\)</span> update rule <sup id="fnref2:bishop_dl"><a class="footnote-ref" href="#fn:bishop_dl">4</a></sup>:</p>
+<p>Under a suitable reparameterization, we recover the stochastic gradient descent (<span class="arithmatex">\(\text{SGD}\)</span>) update rule <sup id="fnref2:bishop_dl"><a class="footnote-ref" href="#fn:bishop_dl">4</a></sup>:</p>
 <div class="arithmatex">\[
 \begin{aligned}
 \mathbf{X}(t) = \mathbf{X}(t-\tau) +  \zeta \nabla L
@@ -923,7 +951,7 @@ F_{i}' = \lambda w_{i}
 <div class="arithmatex">\[
 \hat{\mathbf{X}}(t) = \frac{\mathbf{X}(t)}{1-e^{-\gamma t}} 
 \]</div>
-<p>Under reparameterization, this recovers gradient descent with momentum and friction <sup id="fnref:bottou_sgd"><a class="footnote-ref" href="#fn:bottou_sgd">11</a></sup>:</p>
+<p>Under reparameterization, this recover gradient descent with momentum and friction <sup id="fnref:bottou_sgd"><a class="footnote-ref" href="#fn:bottou_sgd">11</a></sup>:</p>
 <div class="arithmatex">\[
 \begin{aligned}
 \mathbf{X}(t) = \mu \mathbf{X}(t-\tau) + (1-\mu) \zeta \nabla L 
@@ -932,7 +960,7 @@ F_{i}' = \lambda w_{i}
 \mathbf{w}(t) = \mathbf{w}(t-\tau) - \eta \mathbf{X}(t)
 \end{aligned}
 \]</div>
-<p>Most implementations of <span class="arithmatex">\(\text{SGD}\)</span> with momentum ignore the <span class="arithmatex">\(\gamma\)</span> parameter and skip the bias correction.</p>
+<p>Most implementations of <span class="arithmatex">\(\text{SGD}\)</span> with momentum ignore the <span class="arithmatex">\(\gamma\)</span> parameter and omit the bias correction.</p>
 <h3 id="relativistic-hamiltonian">Relativistic Hamiltonian</h3>
 <p>Lastly, we adopt a classical Hamiltonian incorporating relativistic kinetic energy, given by:</p>
 <div class="arithmatex">\[
@@ -951,7 +979,7 @@ v^{i} = \frac{k}{h\beta} \frac{\partial H}{\partial X_{i}} =  \frac{k}{h\beta}  
 \mathbf{w}(t) = \mathbf{w}(t-\tau) - \eta \frac{\mathbf{X}}{ \sqrt{\mathbf{X}^2 + k^2/\beta^2}}
 \]</div>
 <p>However, considering <span class="arithmatex">\(\beta(t) = \beta e^{\gamma t}\)</span>, we observe that <span class="arithmatex">\(\mathbf{v} \rightarrow 0\)</span> rapidly and the system ceases to learn. This is not an error in the theory, rather, it is due to the fact that we are working under a classical approximation in which the potential is considered decoupled from the metric tensor.</p>
-<p>The work of Guskov and Vanchurin on covariant gradient descent <sup id="fnref:guskov_covariant"><a class="footnote-ref" href="#fn:guskov_covariant">14</a></sup> suggests that by embedding the potential into the metric tensor, recovers adaptive momentum-based optimizers such as <span class="arithmatex">\(\text{Adam}\)</span> <sup id="fnref2:kingma_adam"><a class="footnote-ref" href="#fn:kingma_adam">10</a></sup> and, as a specific case, the <span class="arithmatex">\(\text{RMSProp}\)</span> optimizer <sup id="fnref:hinton_nn"><a class="footnote-ref" href="#fn:hinton_nn">15</a></sup>. Verifying this correspondence explicitly within the current theoretical framework remains as future work.</p>
+<p>The work of Guskov and Vanchurin on covariant gradient descent <sup id="fnref:guskov_covariant"><a class="footnote-ref" href="#fn:guskov_covariant">14</a></sup> suggests that by embedding the potential into the metric tensor, recover adaptive momentum-based optimizers such as <span class="arithmatex">\(\text{Adam}\)</span> <sup id="fnref2:kingma_adam"><a class="footnote-ref" href="#fn:kingma_adam">10</a></sup> and, as a specific case, the <span class="arithmatex">\(\text{RMSProp}\)</span> optimizer <sup id="fnref:hinton_nn"><a class="footnote-ref" href="#fn:hinton_nn">15</a></sup>. Verifying this correspondence explicitly within the current theoretical framework remains as future work.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>The proposed formalism demonstrated that a Hamiltonian framework can recover the majority of current optimization algorithms. This approach moves beyond purely heuristic updates, offering a clear physical interpretation where:</p>
 <ul>
@@ -967,19 +995,14 @@ v^{i} = \frac{k}{h\beta} \frac{\partial H}{\partial X_{i}} =  \frac{k}{h\beta}  
 </ul>
 <p>These results lay the groundwork for a new class of physically-informed optimizers. By identifying where current classical approximations fail, such as the decoupling of the potential from the metric tensor, we open new avenues for incorporating covariant and relativistic dynamics into machine learning, potentially leading to more stable and faster convergence in complex loss landscapes.</p>
 <h2 id="citation">Citation</h2>
-<p>This work is versioned. To cite the <strong>specific version v0.1.0</strong>, use:</p>
-<p>Eric Hermosis. <em>Learning Dynamics</em>. Version 0.1.0. 2025.<br />
-DOI: <a href="https://doi.org/10.5281/zenodo.18071681">10.5281/zenodo.18071681</a></p>
 <p>To cite the <strong>work in general, including all versions</strong>, use the concept DOI: <a href="https://doi.org/10.5281/zenodo.18071680">10.5281/zenodo.18071680</a>.</p>
-<p>BibTeX entry for v0.1.0:</p>
 <pre><code class="language-text">@misc{hermosis2025learning,
   author       = {Eric Hermosis},
   title        = {Learning Dynamics},
   year         = {2025},
-  version      = {v0.1.0},
   howpublished = {\url{https://github.com/eric-hermosis/learning-dynamics}},
-  doi          = {10.5281/zenodo.18071681},
-  note         = {GitHub repository, archived on Zenodo}
+  doi          = {10.5281/zenodo.18071680},
+  note         = {GitHub repository, archived on Zenodo (concept DOI)}
 }
 </code></pre>
 <div class="footnote">
