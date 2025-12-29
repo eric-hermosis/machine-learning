@@ -20,4 +20,4 @@ plugins:
 
 extra:
   arithmatex:
-    enable_dollars: true          # allows inline $...$ math
+    enable_dollars: true         
